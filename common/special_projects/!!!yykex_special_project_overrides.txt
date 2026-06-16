@@ -1,0 +1,419 @@
+# YYKEX special project overrides
+# common/special_projects is FIOS: this file should load before vanilla/project files.
+# Delete the old copied full project files after adding this one.
+
+
+########## 00_projects_1 ##########
+
+
+special_project = {
+	key = "ABANDONED_TERRAFORMING_1_PROJECT"
+	event_chain = "abandoned_terraforming_chain"
+	cost = 2000
+	tech_department = society_technology
+	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+	picture = GFX_evt_alien_nature
+
+	event_scope = planet_event
+
+	on_success = {
+		owner = { end_event_chain = "abandoned_terraforming_chain" }
+		random_list = {
+			25 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = yykex }
+						owner = { has_country_flag = yykex_friend }
+					}
+				}
+				planet_event = { id = colony.104 }
+			}
+			25 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+				planet_event = { id = colony.105 }
+			}
+			25 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex_friend }
+				}
+				planet_event = { id = colony.106 }
+			}
+			25 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = yykex }
+						owner = { has_country_flag = yykex_friend }
+					}
+				}
+				planet_event = { id = colony.107 }
+			}
+		}
+	}
+
+	on_fail = {
+	}
+}
+
+special_project = {
+	key = "FALLEN_SHIELD_PROJECT"
+	days_to_research = 720
+	tech_department = physics_technology
+	picture = GFX_evt_ship_in_orbit
+
+	event_scope = ship_event
+
+	requirements = {
+		shipclass_science_ship = 1
+	}
+
+	on_success = {
+		random_list = {
+			25 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+					NOT = { owner = { has_country_flag = yykex_met_tuborek } }
+				}
+				ship_event = { id = galactic_features.301 }
+			}
+			25 = {
+				modifier = {
+					owner = { has_ethic = ethic_gestalt_consciousness }
+					factor = 0
+				}
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+					NOT = { owner = { has_country_flag = yykex_met_tuborek } }
+				}
+				ship_event = { id = galactic_features.302 }
+			}
+			25 = {
+				modifier = { #Should prevent multiple Tuboreks from showing up
+					has_global_flag = met_tuborek
+					factor = 0
+				}
+				owner = { set_country_flag = yykex_met_tuborek }
+				ship_event = { id = galactic_features.303 }
+			}
+			25 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+				ship_event = { id = galactic_features.305 }
+			}
+		}
+		owner = { set_country_flag = shielded_world_opened }
+	}
+
+	on_fail = {
+	}
+}
+
+
+########## 00_projects_3 ##########
+
+special_project = {
+	key = "titanic_life_study_normal"
+	cost = 3500
+	tech_department = society_technology
+	picture = GFX_evt_ship_in_orbit
+	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
+
+	event_scope = planet_event
+
+	on_success = {
+		random_list = {
+			70 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex_friend }
+				}
+				planet_event = { id = colony_mod.101 }
+			}
+			30 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+				planet_event = { id = colony_mod.102 }
+			}
+		}
+	}
+}
+
+special_project = {
+	key = "titanic_life_study_mean"
+	cost = 2500
+	tech_department = society_technology
+	picture = GFX_evt_ship_in_orbit
+	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
+
+	event_scope = planet_event
+
+	on_success = {
+		random_list = {
+			50 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex_friend }
+				}
+				planet_event = { id = colony_mod.101 }
+			}
+			50 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+				planet_event = { id = colony_mod.102 }
+			}
+		}
+	}
+}
+
+special_project = {
+	key = "titanic_life_study_nice"
+	cost = 5000
+	tech_department = society_technology
+	picture = GFX_evt_ship_in_orbit
+	icon = "gfx/interface/icons/situation_log/situation_log_debris.dds"
+
+	event_scope = planet_event
+
+	on_success = {
+		random_list = {
+			90 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex_friend }
+				}
+				planet_event = { id = colony_mod.101 }
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+				planet_event = { id = colony_mod.102 }
+			}
+		}
+	}
+}
+
+
+special_project = {
+	key = "ROGUEMOON_PROJECT"
+	cost = 1500
+	tech_department = society_technology
+	picture = GFX_evt_alien_planet
+	icon = "gfx/interface/icons/situation_log/situation_log_society.dds"
+
+	event_scope = planet_event
+
+	on_success = {
+		random_list = {
+			90 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = yykex }
+						owner = { has_country_flag = yykex_friend }
+					}
+				}
+				planet_event = { id = colony.3002 days = 10 random = 5 }
+			}
+			10 = { planet_event = { id = colony.3003 days = 10 random = 5 } }
+		}
+	}
+}
+
+
+special_project = {
+	key = "DPORTAL_PROJECT"
+	cost = 1500
+	tech_department = physics_technology
+	picture = GFX_evt_wormhole
+	icon = "gfx/interface/icons/situation_log/situation_log_physics.dds"
+
+	event_scope = planet_event
+
+	on_success = {
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = yykex }
+						owner = { has_country_flag = yykex_friend }
+					}
+				}
+				planet_event = { id = colony.3006 days = 10 random = 5 }
+			} #hell
+			10 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = yykex }
+						owner = { has_country_flag = yykex_friend }
+					}
+				}
+				planet_event = { id = colony.3007 days = 10 random = 5 }
+			} #energy
+			10 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex_friend }
+				}
+				planet_event = { id = colony.3008 days = 10 random = 5 }
+			} #null void
+			10 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = yykex }
+						owner = { has_country_flag = yykex_friend }
+					}
+				}
+				planet_event = { id = colony.3009 days = 10 random = 5 }
+			} #mirror
+			5 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = {
+							OR = {
+								home_planet = {
+									#OR = {
+										OR = {
+											is_artificial = yes
+											is_planet_class = pc_city
+											is_planet_class = pc_hive
+											is_planet_class = pc_machine
+											is_planet_class = pc_relic
+										}
+										#owner = {
+										#	NOT = {
+										#		is_same_value = root.owner
+										#	}
+										#}
+									#}
+								}
+								is_ai = yes
+								has_origin = origin_synthetic_fertility
+								has_origin = origin_evolutionary_predators
+								has_origin = origin_toxic_knights
+								has_country_flag = yykex
+							}
+						}
+						has_global_flag = b_world_intrudes
+					}
+				}
+				planet_event = { id = colony.9800 days = 10 random = 5 } #Negative Mass
+			}
+		}
+	}
+}
+
+
+########## 00_projects_leviathans ##########
+
+special_project = {
+	key = "TECHNOSPHERE_BLACKHOLE"
+	cost = 0
+	days_to_research = 1800
+	tech_department = engineering_technology
+	picture = GFX_evt_technosphere
+	event_scope = ship_event
+
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+#		skill = 5
+	}
+
+	on_success = {
+		owner = {
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+					}
+					country_event = { id = leviathans.1061 } #succeeds
+				}
+				25 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+					}
+					country_event = { id = leviathans.1062 } #fails
+				}
+				25 = {
+					set_country_flag = technosphere_special
+					country_event = { id = leviathans.1062 } #secret awesome stuff
+				}
+			}
+		}
+	}
+}
+
+
+########## 03_projects_cosmic_storms ##########
+
+
+
+special_project = {
+    key = project_cosmic_storms_collidedplanet_harmonize
+    event_scope = planet_event
+    event_chain = cs_collided_planet_chain
+    picture = GFX_evt_cosmic_storms_collided_planets
+
+    tech_department = society_technology
+    cost = 5000
+
+    location = yes
+
+    timelimit = @collided_planet_days_before_collapse
+
+    abort_trigger = {
+        NOR = {
+            exists = event_target:collided_planets
+            is_same_value = event_target:collided_planets.owner
+        }
+    }
+
+    on_success = {
+        random_list = {
+            33 = { # Success! Gaia planet
+                planet_event = {
+                    id = cstorms.1225
+                }
+            }
+            63 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+                planet_event = {
+                    id = cstorms.1230
+                }
+            }
+            4 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+                planet_event = {
+                    id = cstorms.1235
+                }
+            }
+        }
+     }
+}
