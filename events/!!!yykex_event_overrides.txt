@@ -1,0 +1,3145 @@
+namespace = ancrel
+
+#ancient_relics_arcsite_events_2
+
+fleet_event = { # “美丽泡沫”遗址必定出结局三（给予“极光韵律”buff，每月能量币+5%）
+	id = ancrel.9196
+	hide_window = yes
+
+	archaeology = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			33 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+				fleet_event = { id = ancrel.9200 }
+			}
+			33 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+				fleet_event = { id = ancrel.9205}
+			}
+			33 = {
+				fleet_event = { id = ancrel.9210 }
+			}
+		}
+	}
+
+	after = {
+		from = { expire_site_event = ancrel.9196 }
+	}
+}
+
+fleet_event = { # ”远古机器人星球“遗址 若可能触发”监视者的信号“则必定触发
+	id = ancrel.12090
+	title = ancrel.12090.name
+	desc = ancrel.12090.desc
+	picture = GFX_evt_ai_planet
+	show_sound = event_mystic_reveal
+	location = from
+
+	archaeology = yes
+	is_triggered_only = yes
+	specimen = galactic_megadrive
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+
+		owner = {
+			create_species = { # Machine Intelligence or Individualist Machine
+				class = MACHINE
+				name = NAME_Surveillance_Bots
+				namelist = "MACHINE1"
+				portrait = random
+				traits = {
+					ideal_planet_class = pc_machine
+					trait = trait_machine_unit
+					trait = trait_robot_logic_engines
+					trait = trait_robot_double_jointed
+					trait = trait_robot_enhanced_memory
+					trait = trait_robot_durable
+					trait = trait_robot_custom_made
+					trait = trait_robot_repurposed_hardware
+				}
+				effect = {
+					set_species_homeworld = from.planet
+					save_event_target_as = new_machines
+				}
+			}
+
+			create_species = { # Regular empires
+				class = ROBOT
+				name = NAME_Surveillance_Bots
+				namelist = "MACHINE1"
+				portrait = random
+				traits = {
+					ideal_planet_class = pc_machine
+					trait = trait_mechanical
+					trait = trait_robot_logic_engines
+					trait = trait_robot_double_jointed
+					trait = trait_robot_enhanced_memory
+					trait = trait_robot_durable
+					trait = trait_robot_custom_made
+					trait = trait_robot_repurposed_hardware
+				}
+				effect = {
+					set_species_homeworld = from.planet
+					save_event_target_as = new_robots
+				}
+			}
+		}
+	}
+
+	after = {
+		from = { set_site_progress_locked = no }
+		large_artifact_reward = yes
+	}
+
+	option = {
+		name = ancrel.12090.A
+		trigger = {
+			owner = { is_machine_empire = yes }
+		}
+		from.planet = {
+			change_pc = pc_machine
+			hidden_effect = {
+				set_owner = root.owner
+				set_timed_planet_flag = {
+					flag = ignore_ai_building_limitations
+					days = 1
+				}
+				add_building = building_machine_major_capital
+				add_building = building_machine_assembly_complex
+				while = {
+					count = 10
+					add_district = district_nexus
+				}
+				while = {
+					count = 5
+					add_district = district_nexus_1
+					add_district = district_nexus_2
+				}
+				add_zone = {
+					district = district_nexus_1
+					zone = zone_energy_nexus
+				}
+				add_zone = {
+					district = district_nexus_2
+					zone = zone_minerals_nexus
+				}
+				while = {
+					count = 80
+					create_pop_group = {
+						species = event_target:new_machines
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			owner = {
+				country_event = { id = ancrel.12095 days = 30 }
+			}
+		}
+	}
+	option = {
+		name = ancrel.12090.B
+		solar_system = {
+			spawn_megastructure = {
+				type = spy_orb_restored
+				planet = from.planet
+				graphical_culture = root.owner
+			}
+		}
+	}
+	option = { # Machine Intelligence or Individualist Machine
+		name = ancrel.12090.C
+		trigger = {
+			owner = {
+				OR = {
+					is_machine_empire = yes
+					is_individual_machine = yes
+				}
+			}
+		}
+		custom_tooltip = ancrel.12090.C.machine.tooltip
+		hidden_effect = {
+			owner = {
+				while = {
+					count = 80
+					random_owned_planet = {
+						create_pop_group = {
+							species = event_target:new_machines
+						}
+						weights = {
+							base = 10
+							modifier = {
+								factor = 0.5
+								free_housing <= 0
+								num_free_districts = {
+									type = any
+									value <= 1
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			owner = {
+				country_event = { id = ancrel.12095 days = 30 }
+			}
+		}
+	}
+	option = { # Regular empires
+		name = ancrel.12090.C
+		trigger = {
+			owner = {
+				is_machine_empire = no
+				is_individual_machine = no
+			}
+		}
+		allow = {
+			owner = { has_policy_flag = robots_allowed }
+		}
+		custom_tooltip = ancrel.12090.C.mechanical.tooltip
+		hidden_effect = {
+			owner = {
+				while = {
+					count = 80
+					random_owned_planet = {
+						create_pop_group = {
+							species = event_target:new_robots
+						}
+						weights = {
+							base = 10
+							modifier = {
+								factor = 0.5
+								free_housing <= 0
+								num_free_districts = {
+									type = any
+									value <= 1
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			owner = {
+				country_event = { id = ancrel.12095 days = 30 }
+			}
+		}
+	}
+	option = {
+		name = ancrel.12090.D
+		trigger = {
+			owner = { is_spiritualist = yes }
+		}
+		from.planet = {
+			add_deposit = d_alloys_25
+		}
+		hidden_effect = {
+			owner = {
+				country_event = { id = ancrel.12095 days = 30 }
+			}
+		}
+	}
+	option = {
+		name = ancrel.12090.E
+		custom_tooltip = ancrel.12090.E.tooltip
+		allow = {
+			owner = { is_spiritualist = no }
+		}
+		hidden_effect = {
+			from.planet = {
+				create_country = {
+					type = default
+					name = "NAME_Repurposed_Surveillance_Network"
+					species = event_target:new_machines
+					ethos = {
+						ethic = ethic_gestalt_consciousness
+					}
+					authority = auth_machine_intelligence
+					civics = {
+						civic = civic_machine_built_to_last
+						civic = civic_machine_builder
+					}
+
+					effect = {
+						prev.solar_system.starbase = {
+							set_owner = prev
+						}
+						give_starting_resources_effect = yes
+						add_resource = {
+							unity = 1000000
+						}
+						copy_techs_from = { target = root.owner }
+						set_subject_of = {
+							who = root.owner
+						}
+					}
+				}
+				change_pc = pc_machine
+				set_timed_planet_flag = {
+					flag = ignore_ai_building_limitations
+					days = 1
+				}
+				while = {
+					count = 80
+					create_pop_group = {
+						species = event_target:new_machines
+					}
+				}
+				while = {
+					count = 10
+					add_district = district_nexus
+				}
+				while = {
+					count = 2
+					add_district = district_nexus_1
+					add_district = district_nexus_2
+				}
+				add_zone = {
+					district = district_nexus_1
+					zone = zone_energy_nexus
+				}
+				add_zone = {
+					district = district_nexus_2
+					zone = zone_minerals_nexus
+				}
+				add_building = building_machine_major_capital
+				add_building = building_machine_assembly_complex
+				solar_system = {
+					if = {
+						limit = {
+							NOR = {
+								has_megastructure = gateway_0
+								has_megastructure = gateway_final
+							}
+						}
+						spawn_megastructure = { #a bit weird, but otherwise they will probably be trapped here forever
+							type = gateway_ruined
+							random_pos = yes
+							orbit_angle = 360
+						}
+					}
+				}
+			}
+			owner = {
+				country_event = { id = ancrel.12095 days = 30 }
+			}
+		}
+	}
+}
+
+namespace = astral_situation
+
+#astral_planes_situation_events
+
+situation_event = { # 星界裂隙进度局势中期事件必出星界行星
+	id = astral_situation.35
+	hide_window = yes
+	is_triggered_only = yes
+
+	location = target
+	situation = this
+
+	immediate = {
+		random_list = {
+			50 = {
+				situation_event = { id = astral_situation.55 }
+				owner = { set_country_flag = has_triggered_rift_in_space_unique_event }
+			}
+			50 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = yykex }
+						owner = { has_country_flag = yykex_friend }
+					}
+				}
+				situation_event = { id = astral_situation.60 }
+				owner = { set_country_flag = has_triggered_rift_in_space_unique_event }
+			}
+			50 = {
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = yykex }
+						owner = { has_country_flag = yykex_friend }
+					}
+				}
+				situation_event = { id = astral_situation.65 }
+				owner = { set_country_flag = has_triggered_rift_in_space_unique_event }
+			}
+			0 = {
+				modifier = {
+					add = value:rift_in_space_event_probability
+					always = yes
+				}
+			}
+		}
+	}
+}
+
+situation_event = { # 星界行星必定为海洋星球，且上面没有障碍
+	id = astral_situation.55
+	title = astral_situation.55.name
+	desc = astral_situation.55.desc
+	picture = GFX_evt_astral_rift
+	is_triggered_only = yes
+
+	location = target
+	situation = this
+
+	immediate = {
+		target.solar_system = {
+			spawn_planet = {
+				class = pc_ocean
+				name = NAME_Planet_Rift_In_Space
+				orbit_distance = 80
+				size = 17
+				init_effect = {
+					prevent_anomaly = yes
+					set_planet_flag = pre_ftl_default
+					generate_pre_ftls_on_planet = yes
+					set_surveyed = {
+						surveyed = yes
+						surveyor = root
+					}
+					set_all_comms_surveyed = yes
+					clear_blockers = yes
+					last_created_country = {
+						establish_communications_no_message = root
+					}
+					save_event_target_as = planet_rift_in_space
+				}
+			}
+		}
+	}
+
+	option = {
+		name = FASCINATING
+	}
+}
+
+namespace = cara
+
+#caravaneer_events
+
+country_event = { # 极大概率出银河之心
+	id = cara.310
+	title = cara_home_lootbox.title
+	desc = {
+		trigger = {
+			has_country_flag = buying_boxes_desc
+			NOT = { has_country_flag = recent_galatron }
+		}
+		text = buying_boxes_desc
+	}
+	desc = {
+		trigger = { has_country_flag = recent_empty_lootbox }
+		text = openedlootboxdesc1
+	}
+	desc = {
+		trigger = {
+			has_country_flag = recent_galatron
+			NOT = { has_modifier = galatron_modifier }
+		}
+		text = lootbox_contents_galatron
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_a }
+		text = lootbox_contents_a
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_b }
+		text = lootbox_contents_b
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_c }
+		text = lootbox_contents_c
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_d }
+		text = lootbox_contents_d
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_e }
+		text = lootbox_contents_e
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_f }
+		text = lootbox_contents_f
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_g }
+		text = lootbox_contents_g
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_h }
+		text = lootbox_contents_h
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_i }
+		text = lootbox_contents_i
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_j }
+		text = lootbox_contents_j
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_k }
+		text = lootbox_contents_k
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_l }
+		text = lootbox_contents_l
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_m }
+		text = lootbox_contents_m
+	}
+	desc = {
+		trigger = { has_country_flag = lootbox_contents_n }
+		text = lootbox_contents_n
+	}
+	diplomatic = yes
+	is_triggered_only = yes
+	custom_gui = "enclave_caravaneer_window"
+	show_sound = event_lootbox_good
+
+	picture_event_data = {
+		portrait = event_target:caravaneer_home_country.ruler
+		room = caravaneer_lootbox_room
+		planet_background = pc_barren_cold
+	}
+	location = event_target:caravaneer_home_system
+
+	immediate = {
+		if = {
+			limit = {
+				check_variable = {
+					which = num_lootboxes
+					value = 5
+				}
+			}
+			set_country_flag = buying_boxes_desc
+		}
+		random_list = {
+			# Galatron
+			1 = {
+				modifier = {
+					add = 100000
+					has_country_flag = yykex
+				}
+				modifier = {
+					factor = 0
+					any_playable_country = {
+						has_relic = r_galatron
+					}
+				}
+				set_country_flag = recent_galatron
+				set_country_flag = galatron_owner
+			}
+			# Empty
+			59 = {
+				modifier = {
+					factor = 0
+					has_country_flag = opened_empty_lootbox
+				}
+				custom_tooltip = lootbox_contents_empty
+				set_country_flag = opened_empty_lootbox
+				set_country_flag = recent_empty_lootbox
+			}
+			# Regular contents
+			140 = {
+				random_list = {
+					100 = {
+						modifier = {
+							factor = 0
+							capital_scope = { has_modifier = ancient_trade_route }
+						}
+						set_country_flag = lootbox_contents_a
+					}
+					100 = { set_country_flag = lootbox_contents_b }
+					100 = { set_country_flag = lootbox_contents_c }
+					100 = { set_country_flag = lootbox_contents_d }
+					100 = { set_country_flag = lootbox_contents_e }
+					100 = {
+						modifier = {
+							factor = 0
+							is_individual_machine = yes
+						}
+						set_country_flag = lootbox_contents_f
+					}
+					100 = { set_country_flag = lootbox_contents_g }
+					100 = { set_country_flag = lootbox_contents_h }
+					100 = { set_country_flag = lootbox_contents_i }
+					100 = { set_country_flag = lootbox_contents_j }
+					100 = { set_country_flag = lootbox_contents_k }
+					1 = {
+						modifier = {
+							factor = 0
+							exists = ruler
+							ruler = { has_trait = leader_trait_psionic }
+						}
+						modifier = {
+							factor = 0
+							is_gestalt = yes
+							has_shroud_dlc = no
+						}
+						set_country_flag = lootbox_contents_l
+					}
+					100 = { set_country_flag = lootbox_contents_m }
+					100 = { set_country_flag = lootbox_contents_n }
+				}
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						which = num_lootboxes
+						value <= 0
+					}
+				}
+				set_variable = {
+					which = num_lootboxes
+					value = 1
+				}
+			}
+			else = {
+				change_variable = {
+					which = num_lootboxes
+					value = 1
+				}
+			}
+			switch = {
+				trigger = has_country_flag
+				lootbox_contents_a = { remove_country_flag = lootbox_contents_a }
+				lootbox_contents_b = { remove_country_flag = lootbox_contents_b }
+				lootbox_contents_c = { remove_country_flag = lootbox_contents_c }
+				lootbox_contents_d = { remove_country_flag = lootbox_contents_d }
+				lootbox_contents_e = { remove_country_flag = lootbox_contents_e }
+				lootbox_contents_f = { remove_country_flag = lootbox_contents_f }
+				lootbox_contents_g = { remove_country_flag = lootbox_contents_g }
+				lootbox_contents_h = { remove_country_flag = lootbox_contents_h }
+				lootbox_contents_i = { remove_country_flag = lootbox_contents_i }
+				lootbox_contents_j = { remove_country_flag = lootbox_contents_j }
+				lootbox_contents_k = { remove_country_flag = lootbox_contents_k }
+				lootbox_contents_l = { remove_country_flag = lootbox_contents_l }
+				lootbox_contents_m = { remove_country_flag = lootbox_contents_m }
+				lootbox_contents_n = { remove_country_flag = lootbox_contents_n }
+				lootbox_contents_p = { remove_country_flag = recent_empty_lootbox }
+			}
+			if = {
+				limit = {
+					has_country_flag = buying_boxes_desc
+				}
+				remove_country_flag = buying_boxes_desc
+				set_country_flag = buying_boxes
+				set_variable = {
+					which = box_cost
+					value = 8450
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = recent_galatron
+					NOT = { has_modifier = galatron_modifier }
+				}
+				remove_country_flag = recent_galatron
+				country_event = { id = cara.320 }
+			}
+			else = {
+				cara_home_return = yes
+			}
+		}
+	}
+
+	option = {
+		custom_gui = "enclave_caravaneer_option"
+		name = OK
+
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = buying_boxes }
+				}
+				set_saved_date = {
+					key = lootboxed_recently
+					days_from_present = 500
+					expires = 500
+				}
+			}
+
+			if = {
+				limit = {
+					has_country_flag = recent_galatron
+					NOT = { has_modifier = galatron_modifier }
+				}
+				custom_tooltip = lootbox_contents_galatron
+			}
+			else_if = {
+				limit = { has_country_flag = recent_empty_lootbox }
+				custom_tooltip = lootbox_contents_empty
+				remove_country_flag = recent_empty_lootbox
+			}
+			else = {
+				switch = {
+					trigger = has_country_flag
+					lootbox_contents_a = {
+						capital_scope = { add_modifier = { modifier = ancient_trade_route days = -1 } }
+						tooltip = {
+							capital_scope = { add_modifier = { modifier = ancient_trade_route days = -1 } }
+						}
+					}
+					lootbox_contents_b = {
+						add_monthly_resource_mult = {
+							resource = consumer_goods
+							value = 6
+							min = 100
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = consumer_goods
+								value = 6
+								min = 100
+							}
+						}
+					}
+					lootbox_contents_c = {
+						custom_tooltip = lootbox_contents_c.tooltip
+					}
+					lootbox_contents_d = {
+						add_monthly_resource_mult = {
+							resource = society_research
+							value = 24
+							min = 2000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = society_research
+								value = 24
+								min = 2000
+							}
+						}
+					}
+					lootbox_contents_e = {
+						custom_tooltip = lootbox_contents_e.tooltip
+						give_specimen = { key = triggerless_gun origin = cara_home_lootbox.title }
+					}
+					lootbox_contents_f = {
+						add_monthly_resource_mult = {
+							resource = food
+							value = 24
+							min = 2000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = food
+								value = 24
+								min = 2000
+							}
+						}
+					}
+					lootbox_contents_g = {
+						custom_tooltip = lootbox_contents_g.tooltip
+						give_specimen = { key = lunatic_broker_therapy_box }
+					}
+					lootbox_contents_h = {
+						add_monthly_resource_mult = {
+							resource = consumer_goods
+							value = 8
+							min = 2000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = consumer_goods
+								value = 8
+								min = 2000
+							}
+						}
+					}
+					lootbox_contents_i = {
+						add_resource = { energy = 4000 }
+						add_resource = { minerals = 4000 }
+						tooltip = {
+							add_resource = { energy = 4000 }
+							add_resource = { minerals = 4000 }
+						}
+					}
+					lootbox_contents_j = {
+						add_monthly_resource_mult = {
+							resource = engineering_research
+							value = 25
+							min = 2000
+							max = 2000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = engineering_research
+								value = 25
+								min = 2000
+								max = 2000
+							}
+						}
+					}
+					lootbox_contents_k = {
+						add_monthly_resource_mult = {
+							resource = society_research
+							value = 25
+							min = 1000
+							max = 1000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = society_research
+								value = 25
+								min = 1000
+								max = 1000
+							}
+						}
+					}
+					lootbox_contents_l = {
+						ruler = {
+							add_trait = {
+								trait = leader_trait_psionic
+							}
+						}
+						tooltip = {
+							ruler = {
+								add_trait = {
+									trait = leader_trait_psionic
+								}
+							}
+						}
+					}
+					lootbox_contents_m = {
+						add_monthly_resource_mult = {
+							resource = physics_research
+							value = 24
+							min = 2000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = physics_research
+								value = 24
+								min = 2000
+							}
+						}
+					}
+					lootbox_contents_n = {
+						add_monthly_resource_mult = {
+							resource = alloys
+							value = 24
+							min = 2000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = alloys
+								value = 24
+								min = 2000
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		custom_gui = "enclave_caravaneer_option"
+		name = cara_home_exit
+		trigger = { always = no } # just here to for the X button
+		default_hide_option = yes
+	}
+}
+
+namespace = colony
+
+#colony_events_2
+
+planet_event = { # 古怪工厂不会绑架人口
+	id = colony.2015
+	title = colony.2015.name
+	desc = colony.2015.desc
+	picture = GFX_evt_alien_city
+	show_sound = event_activating_unknown_technology
+	location = root
+
+	pre_triggers = {
+		has_owner = yes
+		is_homeworld = no
+		original_owner = yes
+		is_ai = no
+		has_ground_combat = no
+		is_capital = no
+		is_occupied_flag = no
+	}
+
+	trigger = {
+		owner = {
+			NOR = {
+				has_country_flag = colony_odd_factory
+				is_machine_empire = yes
+				is_wilderness_empire = yes
+			}
+		}
+		pop_amount > 0
+		NOR = {
+			has_planet_flag = colony_event
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_shattered_ring_habitable
+			is_planet_class = pc_habitat
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_planet_flag = colony_event
+		owner = { set_country_flag = colony_odd_factory }
+		add_deposit = d_odd_factory
+		random_list = {
+			30 = {
+				modifier = {
+					factor = 0
+					owner = { has_country_flag = yykex }
+				}
+				set_planet_flag = colony_factory_kidnap
+			}
+			35 = { set_planet_flag = colony_factory_no_effect }
+		}
+	}
+
+	option = {
+		name = INTRIGUING
+		tooltip = { add_deposit = d_odd_factory }
+	}
+}
+
+namespace = colony_mod
+
+#colony_events_3
+
+planet_event = { # 我地震必出矿，朋友地震必定产生损毁
+	id = colony_mod.3 #unstable tectonics
+	title = "colony_mod.3.name"
+	desc = "colony_mod.3.desc"
+	picture = GFX_evt_colony_settlement
+	show_sound = event_air_raid_siren
+	location = ROOT
+
+	pre_triggers = {
+		has_owner = yes
+		is_homeworld = no
+		original_owner = yes
+		is_ai = no
+		has_ground_combat = no
+		is_capital = no
+	}
+
+	trigger = {
+		has_modifier = "unstable_tectonics"
+		NOT = { has_modifier = "recent_quake" }
+		pop_amount > 0
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = colony_mod.3.a
+		add_modifier = {
+			modifier = "recent_quake"
+			days = 360
+		}
+		custom_tooltip = quake_report_tooltip
+		hidden_effect = {
+			random_list = {
+				33 = {
+					modifier = {
+						factor = 0
+						owner = { has_country_flag = yykex }
+					}
+					planet_event = { id = colony_mod.21 days = 10 random = 5 }
+				}
+				33 = {
+					modifier = {
+						factor = 0
+						owner = { has_country_flag = yykex_friend }
+					}
+					planet_event = { id = colony_mod.22 days = 10 random = 5 }
+				}
+				33 = {
+					modifier = {
+						factor = 0
+						OR = {
+							owner = { has_country_flag = yykex }
+							owner = { has_country_flag = yykex_friend }
+						}
+					}
+					planet_event = { id = colony_mod.23 days = 10 random = 5 }
+				}
+			}
+		}
+	}
+}
+
+namespace = distar
+
+#distant_stars_events_2
+
+country_event = { # 外星盒子我和朋友必定成功触发三种溶液
+	id = distar.3055
+	title = "distar.3055.name"
+	desc = {
+		trigger = {
+			hidden:owner = {
+				switch = {
+					trigger = has_country_flag
+					alien_box_researched = { text = distar.3055.desc.1 }
+					default = { text = distar.3055.desc }
+				}
+			}
+		}
+	}
+	picture = GFX_evt_genetic_modification
+	show_sound = event_scanner
+	location = from
+
+	is_triggered_only = yes
+
+	specimen = centrifugal_container
+
+	option = { # Use the red solution
+		allow = {
+			is_natural_design_empire = no
+		}
+		name = distar.3055.a
+		custom_tooltip = distar.3055.a.tooltip
+		hidden_effect = {
+			add_red_solution = yes
+			country_event = { id = distar.3057 days = 5 }
+		}
+	}
+
+	option = { # Use the green solution
+		allow = {
+			is_natural_design_empire = no
+		}
+		name = distar.3055.b
+		custom_tooltip = distar.3055.b.tooltip
+		hidden_effect = {
+			add_green_solution = yes
+			country_event = { id = distar.3057 days = 5 }
+		}
+	}
+
+	option = { # Use the blue solution
+		allow = {
+			is_natural_design_empire = no
+		}
+		name = distar.3055.c
+		custom_tooltip = distar.3055.c.tooltip
+		hidden_effect = {
+			add_blue_solution = yes
+			country_event = { id = distar.3057 days = 5 }
+		}
+	}
+
+	option = {
+		allow = {
+			is_natural_design_empire = no
+		}
+		name = distar.3055.d.evopred
+		custom_tooltip = distar.3055.d.evopred.tooltip
+		hidden_effect = {
+			random_list = {
+				50 = {
+					add_red_solution = yes
+					add_green_solution = yes
+					add_blue_solution = yes
+					country_event = { id = distar.3057 days = 5 }
+					remove_country_flag = strong_removed_verystrong_added
+					remove_country_flag = weak_removed_strong_added
+					remove_country_flag = verystrong_added
+					remove_country_flag = adaptive_removed_extremelyadaptive_added
+					remove_country_flag = nonadaptive_removed_adaptive_added
+					remove_country_flag = extremelyadaptive_added
+					remove_country_flag = enduring_removed_venerable_added
+					remove_country_flag = fleeting_removed_enduring_added
+					remove_country_flag = venerable_added
+					set_country_flag = modification_all
+				}
+				50 = {
+					modifier = {
+						factor = 0
+						OR = {
+							has_country_flag = yykex
+							has_country_flag = yykex_friend
+						}
+					}
+					country_event = { id = distar.3057 days = 5 }
+				}
+			}
+		}
+	}
+
+	option = { # Sell them
+		name = distar.3055.d
+		custom_tooltip = distar.3055.d.tooltip
+		add_monthly_resource_mult = {
+			resource = energy
+			value = @tier2materialreward
+			min = @tier2materialmin
+			max = @tier2materialmax
+		}
+		add_monthly_resource_mult = {
+			resource = minerals
+			value = @tier1materialreward
+			min = @tier1materialmin
+			max = @tier1materialmax
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			update_node_portraits_if_gestalt_effect = yes
+		}
+	}
+}
+
+namespace = fallen_machine_empire
+
+#fallen_machine_empire_events
+
+country_event = { # 允许个体机械也可以接机械爹的代码改进任务
+	id = fallen_machine_empire.20
+	title = OK
+	desc = OK
+
+	hide_window = yes
+
+	mean_time_to_happen = {
+		years = 100
+	}
+
+	trigger = {
+		OR = {
+			is_machine_empire = yes
+			is_mechanical_empire = yes
+			is_individual_machine = yes
+		}
+		is_country_type = default
+		NOT = { has_country_flag = fe_machine_task_2 }
+		is_at_war = no
+
+		any_country = {
+			is_valid_fallen_empire_for_task = yes
+			is_machine_empire = yes
+			is_enigmatic_to = root
+			has_communications = root
+			NOT = { has_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } }
+			NOT = { has_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request } }
+		}
+	}
+
+	immediate = {
+		set_country_flag = fe_machine_task_2
+
+		random_country = {
+			limit = {
+				is_valid_fallen_empire_for_task = yes
+				is_machine_empire = yes
+				is_enigmatic_to = root
+				has_communications = root
+				NOT = { has_opinion_modifier = { who = root modifier = opinion_refused_fallen_empire_request } }
+				NOT = { has_opinion_modifier = { who = root modifier = opinion_accepted_fallen_empire_request } }
+			}
+
+			save_event_target_as = FallenEmpireTaskOrigin
+			root = { country_event = { id = fallen_machine_empire.21 } }
+		}
+	}
+}
+
+namespace = fircon
+
+#first_contact_dlc_events
+
+first_contact_event = { # 万爪之母强化
+	id = fircon.1212
+	title = "fircon.1212.name"
+	desc = "fircon.1212.desc"
+	picture = GFX_evt_shroudwalker_enclave
+	show_sound = event_mystic_reveal
+	is_triggered_only = yes
+	first_contact = yes
+
+	show_sound = event_alien_nature
+
+	immediate = {
+		set_site_progress_locked = yes
+	}
+
+	option = { # pacific ending
+		name = {
+			trigger = {
+				owner = {
+					is_xenophobe = no
+				}
+			}
+			text = "fircon.1212.a"
+		}
+		name = {
+			trigger = {
+				owner = {
+					is_xenophobe = yes
+				}
+			}
+			text = "fircon.1212.ab"
+		}
+		custom_tooltip = "fircon.1212.a.tooltip"
+		owner = {
+			create_leader = {
+				class = scientist
+				name = "NAME_Guest"
+				species = root.contact_country.species
+				gender = female
+				skill = 8
+				randomize_traits = no
+				traits = {
+					1 = leader_trait_psionic
+					2 = subclass_scientist_scholar
+					3 = leader_trait_archaeologist_2
+					4 = leader_trait_sapient_AI_assistant
+					5 = leader_trait_academic_dig_site_expert_3
+					6 = leader_trait_academic_astral_rift_expert_2
+					7 = leader_trait_collective_wisdom
+					8 = leader_trait_scientist_mind_wipe_02
+				}
+				event_leader = yes
+				effect = {
+					save_event_target_as = guest_scientist
+					set_skill = 10
+					change_background_ethic = ethic_materialist
+				}
+			}
+			hidden_effect = {
+				country_event = { id = fircon.1231 days = 1800 random = 360 } # homesickness (5 years)
+				country_event = { id = fircon.1230 days = 60 random = 30 } # special project
+			}
+		}
+	}
+
+	option = { # lab ending
+		name = fircon.1212.b
+		trigger = {
+			owner = {
+				OR = {
+					is_materialist = yes
+					is_xenophile = no
+					has_valid_civic = civic_technocracy
+				}
+			}
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
+		if = {
+			limit = {
+				owner = { has_origin = origin_evolutionary_predators }
+			}
+			owner = { give_evolutionary_predator_situation_progress_and_dna = { AMOUNT = small } }
+		}
+	}
+
+	option = { # sacrifice ending
+		name = fircon.1212.c
+		trigger = {
+			owner = {
+				OR = {
+					is_xenophobe = yes
+					is_militarist = yes
+					is_death_cult_empire = yes
+				}
+			}
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier2unityreward
+				min = @tier2unitymin
+				max = @tier2unitymax
+			}
+		}
+	}
+
+	after = {
+		set_site_progress_locked = no
+		hidden_effect = { finish_first_contact = yes }
+		owner = {
+			set_country_flag = knows_jaunting_traveler_story
+		}
+	}
+}
+
+namespace = crisis
+
+#machine_age_crisis_events
+
+country_event = { # 我不会触发合金延展性负面或无限课题-不幸的失败或唤醒银河守护者
+	id = crisis.7200
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_country_type = default
+		has_ascension_perk = ap_cosmogenesis
+		last_increased_tech = tech_cosmogenesis_thesis
+	}
+
+	immediate = {
+		random_list = {
+			2 = { #Blackout
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_blackout
+				}
+				set_country_flag = cosmogenesis_thesis_blackout_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7205 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_blackout
+				set_theses_flags = yes
+			}
+			2 = { #Constant Rounding
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_constant
+				}
+				set_country_flag = cosmogenesis_thesis_constant_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7210 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_constant
+				set_theses_flags = yes
+			}
+			1 = { #Superlight
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_superlight
+				}
+				set_country_flag = cosmogenesis_thesis_superlight_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7215 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_superlight
+				set_theses_flags = yes
+			}
+			1 = { #Alloy Ductility - Good
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_alloy_ductility
+				}
+				set_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7235 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_alloy_ductility
+				set_theses_flags = yes
+			}
+			1 = { #Alloy Ductility - Bad
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_alloy_ductility
+				}
+				modifier = {
+					factor = 0
+					has_country_flag = yykex
+				}
+				set_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7240 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_alloy_ductility
+				set_theses_flags = yes
+			}
+			1 = { #Altered Nutrition - Good
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_altered_nutrition
+				}
+				set_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7245 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_altered_nutrition
+				set_theses_flags = yes
+			}
+			1 = { #Altered Nutrition - Bad
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_altered_nutrition
+				}
+				set_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7250 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_altered_nutrition
+				set_theses_flags = yes
+			}
+			2 = { #Mass Shift
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_mass_shift
+				}
+				set_country_flag = cosmogenesis_thesis_mass_shift_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7255 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_mass_shift
+				set_theses_flags = yes
+			}
+			2 = { #Shroud Tears
+				modifier = {
+					factor = 0
+					has_global_flag = cosmogenesis_thesis_shroud_tear
+				}
+				set_country_flag = cosmogenesis_thesis_shroud_tear_initiator
+				every_playable_country = {
+					country_event = { id = crisis.7260 days = 1 }
+				}
+				set_global_flag = cosmogenesis_thesis_shroud_tear
+				set_theses_flags = yes
+			}
+			4 = { #Filler - Good
+				country_event = { id = crisis.7265 days = 1 }
+			}
+			8 = { # Filler - Bad
+				modifier = { #Reduce the likelihood of bad outcome if you know more about what you're doing
+					add = -2
+					resource_stockpile_compare = {
+						resource = advanced_logic
+						value >= 17000
+					}
+				}
+				modifier = {
+					add = -2
+					resource_stockpile_compare = {
+						resource = advanced_logic
+						value >= 21000
+					}
+				}
+				modifier = {
+					add = -2
+					resource_stockpile_compare = {
+						resource = advanced_logic
+						value >= 26000
+					}
+				}
+				modifier = {
+					factor = 0
+					has_country_flag = yykex
+				}
+				country_event = { id = crisis.7270 days = 1 }
+			}
+		}
+		change_variable = {
+			which = applied_infinity_thesis
+			value = +1
+		}
+		random_country = {
+			limit = {
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+				is_fanatic_materialist = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = warned_by_materialist_fe
+					NOT = { has_origin = origin_scion }
+				}
+				add_opinion_modifier = {
+					modifier = opinion_cosmogenesis_thesis
+					who = root
+				}
+			}
+
+			random_list = {
+				99 = { }
+				1 = {
+					modifier = {
+						factor = 0
+						any_country = {
+							has_country_flag = guardians_of_the_galaxy
+						}
+					}
+					modifier = {
+						factor = 0
+						count_country = {
+							count = 0
+							limit = {
+								OR = {
+									is_country_type = fallen_empire
+									is_country_type = awakened_fallen_empire
+								}
+							}
+						}
+					}
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+					}
+					awaken_guardians_of_the_galaxy = yes
+				}
+			}
+			save_event_target_as = materialist_fe
+		}
+		country_event = { id = crisis.7285 days = 30 }
+	}
+}
+
+country_event = { # 我作为陷入黑暗的触发者可以拥有永久的buff
+	id = crisis.7205
+	title = "crisis.7205.name"
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_blackout_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis
+			}
+		}
+		text = crisis.7205.desc.unknown
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_blackout_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_2
+			}
+		}
+		text = crisis.7205.desc.known
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_blackout_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_3
+			}
+		}
+		text = crisis.7205.desc.again
+	}
+	desc = {
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_blackout_initiator
+		}
+		text = crisis.7205.desc.crisis
+	}
+
+	picture = GFX_evt_worrying_signal
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	option = { #Non-Crisis option
+		name = crisis.7205.a
+		trigger = {
+			NOT = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		if = {
+			limit = {
+				has_first_contact_dlc = yes
+			}
+			add_modifier = {
+				modifier = cosmogenesis_blackout_first_contact
+				years = 3
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = cosmogenesis_blackout
+				years = 3
+			}
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+	}
+
+	option = { #Fellow-Crisis option
+		name = crisis.7205.b
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_thesis_blackout_initiator }
+		}
+		if = {
+			limit = {
+				has_first_contact_dlc = yes
+			}
+			add_modifier = {
+				modifier = cosmogenesis_blackout_first_contact
+				years = 3
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = cosmogenesis_blackout
+				years = 3
+			}
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = @tier4researchreward
+			min = @tier4researchmin
+			max = @tier4researchmax
+		}
+	}
+
+	option = { #Crisis option
+		name = crisis.7205.c
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_blackout_initiator
+		}
+		if = {
+			limit = {
+				has_first_contact_dlc = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = yykex
+				}
+				add_modifier = {
+					modifier = cosmogenesis_blackout_first_contact
+					days = -1
+				}
+			}
+			else = {
+				add_modifier = {
+					modifier = cosmogenesis_blackout_first_contact
+					years = 3
+				}
+			}
+		}
+		else = {
+			add_modifier = {
+				modifier = cosmogenesis_blackout
+				years = 3
+			}
+		}
+		custom_tooltip = add_crisis_currency_tt
+		hidden_effect = {
+			complete_crisis_objective = crisobj_research_thesis
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_country_type = default
+					has_communications = root
+				}
+			}
+			custom_tooltip = cosmogenesis_negative_opinion_tt
+		}
+	}
+}
+
+country_event = { # 我作为常数取整的触发者不会获得的”物理常数取整“buff
+	id = crisis.7210
+	title = "crisis.7210.name"
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_constant_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis
+			}
+		}
+		text = crisis.7210.desc.unknown
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_constant_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_2
+			}
+		}
+		text = crisis.7210.desc.known
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_constant_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_3
+			}
+		}
+		text = crisis.7210.desc.again
+	}
+	desc = {
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_constant_initiator
+		}
+		text = crisis.7210.desc.crisis
+	}
+
+	picture = GFX_evt_cosmogenesis_crisis
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	option = { #Non-Crisis option
+		name = crisis.7210.a
+		trigger = {
+			NOT = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		add_modifier = {
+			modifier = cosmogenesis_constant
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+	}
+
+	option = { #Fellow-Crisis option
+		name = crisis.7210.b
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_thesis_constant_initiator }
+		}
+		add_modifier = {
+			modifier = cosmogenesis_constant
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = @tier4researchreward
+			min = @tier4researchmin
+			max = @tier4researchmax
+		}
+	}
+
+	option = { #Crisis option
+		name = crisis.7210.c
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_constant_initiator
+		}
+        if = {
+            limit = { NOT = { has_country_flag = yykex } }
+            add_modifier = {
+                modifier = cosmogenesis_constant
+                years = 3
+            }
+        }
+		custom_tooltip = add_crisis_currency_tt
+		hidden_effect = {
+			complete_crisis_objective = crisobj_research_thesis
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_country_type = default
+					has_communications = root
+				}
+			}
+			custom_tooltip = cosmogenesis_negative_opinion_tt
+		}
+	}
+}
+
+country_event = { # 我作为超光的触发者可以获得永久的陷入黑暗buff且不会触发后续负面事件
+	id = crisis.7215
+	title = "crisis.7215.name"
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_superlight_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis
+			}
+		}
+		text = crisis.7215.desc.unknown
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_superlight_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_2
+			}
+		}
+		text = crisis.7215.desc.known
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_superlight_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_3
+			}
+		}
+		text = crisis.7215.desc.again
+	}
+	desc = {
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_superlight_initiator
+		}
+		text = crisis.7215.desc.crisis
+	}
+
+	picture = GFX_evt_supernova
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	option = { #Non-Crisis option
+		name = crisis.7215.a
+		trigger = {
+			NOT = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		add_modifier = {
+			modifier = cosmogenesis_superlight
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+	}
+
+	option = { #Fellow-Crisis option
+		name = crisis.7215.b
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_thesis_superlight_initiator }
+		}
+		add_modifier = {
+			modifier = cosmogenesis_superlight
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = @tier4researchreward
+			min = @tier4researchmin
+			max = @tier4researchmax
+		}
+	}
+
+	option = { #Crisis option
+		name = crisis.7215.c
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_superlight_initiator
+		}
+        if = {
+            limit = { has_country_flag = yykex }
+            add_modifier = {
+                modifier = cosmogenesis_superlight
+                days = -1
+            }
+        }
+        else = {
+            add_modifier = {
+                modifier = cosmogenesis_superlight
+                years = 3
+            }
+        }
+		custom_tooltip = add_crisis_currency_tt
+		hidden_effect = {
+			complete_crisis_objective = crisobj_research_thesis
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_country_type = default
+					has_communications = root
+				}
+			}
+			custom_tooltip = cosmogenesis_negative_opinion_tt
+		}
+	}
+
+	after = {
+		if = {
+			limit = { NOT = { has_country_flag = yykex } }
+			hidden_effect = {
+				country_event = { id = crisis.7220 days = 60 random = 10 }
+			}
+		}
+	}
+}
+
+country_event = { # 我作为合金延展性正面的触发者可以获得永久的”陷入黑暗“buff
+	id = crisis.7235
+	title = "crisis.7235.name"
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis
+			}
+		}
+		text = crisis.7235.desc.unknown
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_2
+			}
+		}
+		text = crisis.7235.desc.known
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_3
+			}
+		}
+		text = crisis.7235.desc.again
+	}
+	desc = {
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
+		}
+		text = crisis.7235.desc.crisis
+	}
+
+	picture = GFX_evt_engineering_research
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	option = { #Non-Crisis option
+		name = crisis.7235.a
+		trigger = {
+			NOT = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		add_modifier = {
+			modifier = cosmogenesis_alloy_ductility
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+	}
+
+	option = { #Fellow-Crisis option
+		name = crisis.7235.b
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_thesis_alloy_ductility_initiator }
+		}
+		add_modifier = {
+			modifier = cosmogenesis_alloy_ductility
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+		add_monthly_resource_mult = {
+			resource = engineering_research
+			value = @tier4researchreward
+			min = @tier4researchmin
+			max = @tier4researchmax
+		}
+	}
+
+	option = { #Crisis option
+		name = crisis.7235.c
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
+		}
+        if = {
+            limit = { has_country_flag = yykex }
+            add_modifier = {
+                modifier = cosmogenesis_alloy_ductility
+                days = -1
+            }
+        }
+        else = {
+            add_modifier = {
+                modifier = cosmogenesis_alloy_ductility
+                years = 3
+            }
+        }
+		custom_tooltip = add_crisis_currency_tt
+		hidden_effect = {
+			complete_crisis_objective = crisobj_research_thesis
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_country_type = default
+					has_communications = root
+				}
+			}
+			custom_tooltip = cosmogenesis_negative_opinion_tt
+		}
+	}
+}
+
+country_event = { # 我作为调节营养正面的触发者可以获得永久的”陷入黑暗“buff
+	id = crisis.7245
+	title = "crisis.7245.name"
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis
+			}
+		}
+		text = crisis.7245.desc.unknown
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_2
+			}
+		}
+		text = crisis.7245.desc.known
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_3
+			}
+		}
+		text = crisis.7245.desc.again
+	}
+	desc = {
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+		}
+		text = crisis.7245.desc.crisis
+	}
+
+	picture = GFX_evt_astral_rift_garden_2
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	option = { #Non-Crisis option
+		name = crisis.7245.a
+		trigger = {
+			NOT = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		add_modifier = {
+			modifier = cosmogenesis_altered_nutrition
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+	}
+
+	option = { #Fellow-Crisis option
+		name = crisis.7245.b
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator }
+		}
+		add_modifier = {
+			modifier = cosmogenesis_altered_nutrition
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+		add_monthly_resource_mult = {
+			resource = engineering_research
+			value = @tier4researchreward
+			min = @tier4researchmin
+			max = @tier4researchmax
+		}
+	}
+
+	option = { #Crisis option
+		name = crisis.7245.c
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+		}
+		if = {
+            limit = { has_country_flag = yykex }
+            add_modifier = {
+                modifier = cosmogenesis_altered_nutrition
+                days = -1
+            }
+        }
+        else = {
+            add_modifier = {
+                modifier = cosmogenesis_altered_nutrition
+                years = 3
+            }
+        }
+		custom_tooltip = add_crisis_currency_tt
+		hidden_effect = {
+			complete_crisis_objective = crisobj_research_thesis
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_country_type = default
+					has_communications = root
+				}
+			}
+			custom_tooltip = cosmogenesis_negative_opinion_tt
+		}
+	}
+}
+
+country_event = { # 我作为调节营养负面的触发者可以获得永久的”陷入黑暗“buff
+	id = crisis.7250
+	title = "crisis.7250.name"
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis
+			}
+		}
+		text = crisis.7250.desc.unknown
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_2
+			}
+		}
+		text = crisis.7250.desc.known
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_3
+			}
+		}
+		text = crisis.7250.desc.again
+	}
+	desc = {
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+		}
+		text = crisis.7250.desc.crisis
+	}
+
+	picture = GFX_evt_astral_rift_garden_2_fire
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	option = { #Non-Crisis option
+		name = crisis.7250.a
+		trigger = {
+			NOT = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		add_modifier = {
+			modifier = cosmogenesis_altered_nutrition_bad
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+	}
+
+	option = { #Fellow-Crisis option
+		name = crisis.7250.b
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator }
+		}
+		add_modifier = {
+			modifier = cosmogenesis_altered_nutrition_bad
+			years = 3
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+		add_monthly_resource_mult = {
+			resource = society_research
+			value = @tier4researchreward
+			min = @tier4researchmin
+			max = @tier4researchmax
+		}
+	}
+
+	option = { #Crisis option
+		name = crisis.7250.c
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
+		}
+		if = {
+            limit = { has_country_flag = yykex }
+            add_modifier = {
+                modifier = cosmogenesis_altered_nutrition_bad
+                days = -1
+            }
+        }
+        else = {
+            add_modifier = {
+                modifier = cosmogenesis_altered_nutrition_bad
+                years = 3
+            }
+        }
+		custom_tooltip = add_crisis_currency_tt
+		hidden_effect = {
+			complete_crisis_objective = crisobj_research_thesis
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_country_type = default
+					has_communications = root
+				}
+			}
+			custom_tooltip = cosmogenesis_negative_opinion_tt
+		}
+	}
+}
+
+country_event = { # 我不会受到质量偏移的影响
+	id = crisis.7255
+	title = "crisis.7255.name"
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_mass_shift_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis
+			}
+		}
+		text = crisis.7255.desc.unknown
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_mass_shift_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_2
+			}
+		}
+		text = crisis.7255.desc.known
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_mass_shift_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_3
+			}
+		}
+		text = crisis.7255.desc.again
+	}
+	desc = {
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_mass_shift_initiator
+		}
+		text = crisis.7255.desc.crisis
+	}
+
+	picture = GFX_evt_rift_sphere
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	immediate = {
+		every_owned_planet = {
+			limit = {
+				has_modifier = low_gravity
+				is_artificial = no
+			}
+			random_list = {
+				90 = {}
+				10 = {
+					modifier = {
+						factor = 0
+						owner = { has_country_flag = yykex }
+					}
+					modifier = {
+						factor = 0.5
+						planet_size > 16
+					}
+					modifier = {
+						factor = 0.25
+						planet_size > 19
+					}
+					modifier = {
+						factor = 1.5
+						planet_size < 12
+					}
+					modifier = {
+						factor = 2
+						planet_size < 8
+					}
+					add_modifier = {
+						modifier = leaking_atmosphere
+						days = -1
+					}
+					enable_special_project = {
+						name = COSMOGENESIS_LEAKING_ATMOSPHERE
+					}
+					set_planet_flag = mass_shift_affected
+				}
+			}
+		}
+		every_owned_planet = {
+			limit = {
+				NOR = {
+					has_modifier = high_gravity
+					has_modifier = low_gravity
+				}
+				is_artificial = no
+			}
+			random_list = {
+				90 = {}
+				10 = {
+					modifier = {
+						factor = 0
+						owner = { has_country_flag = yykex }
+					}
+					modifier = {
+						factor = 0.5
+						planet_size > 19
+					}
+					modifier = {
+						factor = 0.5
+						planet_size > 22
+					}
+					modifier = {
+						factor = 2
+						planet_size < 16
+					}
+					modifier = {
+						factor = 2
+						planet_size < 12
+					}
+					add_modifier = {
+						modifier = low_gravity
+						days = -1
+					}
+					set_planet_flag = mass_shift_affected
+				}
+			}
+		}
+		every_owned_planet = {
+			limit = {
+				has_modifier = high_gravity
+				is_artificial = no
+			}
+			random_list = {
+				40 = {}
+				60 = {
+					modifier = {
+						factor = 0
+						owner = { has_country_flag = yykex }
+					}
+					remove_modifier = high_gravity
+					set_planet_flag = mass_shift_affected
+				}
+			}
+		}
+	}
+
+	option = { #Non-Crisis option
+		name = crisis.7255.a
+		trigger = {
+			NOT = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		if = {
+			limit = {
+				any_owned_planet = {
+					has_planet_flag = mass_shift_affected
+				}
+			}
+			custom_tooltip = mass_shift_tooltip
+			owned_planet_list_tooltip = {
+				limit = {
+					has_planet_flag = mass_shift_affected
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+	}
+
+	option = { #Fellow-Crisis option
+		name = crisis.7255.b
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_thesis_mass_shift_initiator }
+		}
+		if = {
+			limit = {
+				any_owned_planet = {
+					has_planet_flag = mass_shift_affected
+				}
+			}
+			custom_tooltip = mass_shift_tooltip
+			owned_planet_list_tooltip = {
+				limit = {
+					has_planet_flag = mass_shift_affected
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = @tier4researchreward
+			min = @tier4researchmin
+			max = @tier4researchmax
+		}
+	}
+
+	option = { #Crisis option
+		name = crisis.7255.c
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_mass_shift_initiator
+		}
+		custom_tooltip = add_crisis_currency_tt
+		hidden_effect = {
+			complete_crisis_objective = crisobj_research_thesis
+		}
+		if = {
+			limit = {
+				any_owned_planet = {
+					has_planet_flag = mass_shift_affected
+				}
+			}
+			custom_tooltip = mass_shift_tooltip
+			owned_planet_list_tooltip = {
+				limit = {
+					has_planet_flag = mass_shift_affected
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_country_type = default
+					has_communications = root
+				}
+			}
+			custom_tooltip = cosmogenesis_negative_opinion_tt
+		}
+	}
+
+	after = {
+		every_owned_planet = {
+			limit = {
+				has_planet_flag = mass_shift_affected
+			}
+			remove_planet_flag = mass_shift_affected
+		}
+	}
+}
+
+country_event = { # 我一定不会受到虚境撕裂的影响，我朋友一定会
+	id = crisis.7260
+	title = "crisis.7260.name"
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_shroud_tear_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis
+			}
+		}
+		text = crisis.7260.desc.unknown
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_shroud_tear_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_2
+			}
+		}
+		text = crisis.7260.desc.known
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_flag = cosmogenesis_thesis_shroud_tear_initiator
+			}
+			FROM = {
+				has_country_flag = cosmogenesis_has_done_a_thesis_3
+			}
+		}
+		text = crisis.7260.desc.again
+	}
+	desc = {
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_shroud_tear_initiator
+		}
+		text = crisis.7260.desc.crisis
+	}
+
+	picture = GFX_evt_astral_scar
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	immediate = {
+		every_system_within_border = {
+			random_list = {
+				92 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex_friend
+					}
+				}
+				8 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+					}
+					if = {
+						limit = { NOT = { exists = event_target:shroud_country } }
+						create_country = {
+							name = "NAME_Creatures_of_the_Shroud"
+							type = shroud_spirits
+							flag = {
+								icon = {
+									category = "special"
+									file = "the_shroud.dds"
+								}
+								background= {
+									category = "backgrounds"
+									file = "00_solid.dds"
+								}
+								colors = {
+									"dark_purple"
+									"black"
+									"null"
+									"null"
+								}
+							}
+						}
+						last_created_country = {
+							save_global_event_target_as = shroud_country
+							add_modifier = {
+								modifier = supercharged_shroud_country
+								years = 3
+							}
+						}
+					}
+					create_fleet = {
+						name = "NAME_Psionic_Entity"
+						settings = {
+							spawn_debris = no
+							is_boss = yes
+						}
+						effect = {
+							set_owner = event_target:shroud_country
+							set_fleet_flag = crisis_shroud_entity
+							create_ship = {
+								name = "NAME_Psionic_Entity"
+								design = "NAME_Corrupted_Avatar"
+							}
+							set_location = {
+								target = prev.star
+								distance = 100
+								angle = random
+							}
+							set_fleet_stance = aggressive
+							set_aggro_range_measure_from = return_point
+							set_aggro_range = 2000
+						}
+					}
+					star = {
+						create_ambient_object = {
+							type = "psi_storm_1"
+							location = this
+						}
+						last_created_ambient_object = {
+							set_ambient_object_flag = psi_storm_object
+							set_location = {
+								target = prev
+								distance = 0
+								angle = random
+							}
+						}
+					}
+				}
+			}
+		}
+		every_playable_country = {
+			establish_communications_no_message = event_target:shroud_country
+		}
+	}
+
+	option = { #Non-Crisis option
+		name = crisis.7260.a
+		trigger = {
+			NOT = {
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		add_modifier = {
+			modifier = cosmogenesis_shroud_tear
+			years = 7
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+	}
+
+	option = { #Fellow-Crisis option
+		name = crisis.7260.b
+		trigger = {
+			has_ascension_perk = ap_cosmogenesis
+			NOT = { has_country_flag = cosmogenesis_thesis_shroud_tear_initiator }
+		}
+		add_modifier = {
+			modifier = cosmogenesis_shroud_tear
+			years = 7
+		}
+		if = {
+			limit = {
+				has_communications = FROM
+			}
+			add_opinion_modifier = {
+				modifier = opinion_cosmogenesis_thesis
+				who = FROM
+			}
+		}
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = @tier4researchreward
+			min = @tier4researchmin
+			max = @tier4researchmax
+		}
+	}
+
+	option = { #Crisis option
+		name = crisis.7260.c
+		trigger = {
+			has_country_flag = cosmogenesis_thesis_shroud_tear_initiator
+		}
+		add_modifier = {
+			modifier = cosmogenesis_shroud_tear
+			days = 1
+		}
+		custom_tooltip = add_crisis_currency_tt
+		hidden_effect = {
+			complete_crisis_objective = crisobj_research_thesis
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_country_type = default
+					has_communications = root
+				}
+			}
+			custom_tooltip = cosmogenesis_negative_opinion_tt
+		}
+	}
+}
+
+country_event = { # 先拿永久 modifier / 免费科技，后拿星球奖励
+	id = crisis.7265
+	title = "crisis.7265.name"
+	desc = {
+		trigger = {
+			has_country_flag = thesis_filler_a
+		}
+		text = crisis.7265.desc.a
+	}
+	desc = {
+		trigger = {
+			has_country_flag = thesis_filler_b
+		}
+		text = crisis.7265.desc.b
+	}
+	desc = {
+		trigger = {
+			has_country_flag = thesis_filler_c
+		}
+		text = crisis.7265.desc.c
+	}
+	desc = {
+		trigger = {
+			has_country_flag = thesis_filler_d
+		}
+		text = crisis.7265.desc.d
+	}
+	desc = {
+		trigger = {
+			has_country_flag = thesis_filler_e
+		}
+		text = crisis.7265.desc.e
+	}
+	desc = {
+		trigger = {
+			has_country_flag = thesis_filler_f
+		}
+		text = crisis.7265.desc.f
+	}
+	desc = {
+		trigger = {
+			has_country_flag = thesis_filler_g
+		}
+		text = crisis.7265.desc.g
+	}
+	desc = {
+		trigger = {
+			has_country_flag = thesis_filler_h
+		}
+		text = crisis.7265.desc.h
+	}
+
+	picture = GFX_evt_astral_rift_entangled_dark_matter
+	show_sound = event_worrying_signal
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				1 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+					}
+					set_country_flag = thesis_filler_a
+				} # Garbage to alloys
+				1 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+						NOT = { has_country_flag = thesis_filler_g_fail }
+					}
+					set_country_flag = thesis_filler_b
+				} # Colony sped up
+				1 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+						has_modifier = cosmogenesis_superconductor
+					}
+					set_country_flag = thesis_filler_c
+				} # Superconductor
+				1 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+					}
+					set_country_flag = thesis_filler_d
+				} # Adv Logic breakthrough
+				1 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+						has_modifier = cosmogenesis_space_compression
+					}
+					set_country_flag = thesis_filler_e
+				} # Sublight Compression
+				1 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+						has_modifier = cosmogenesis_higher_yield_payloads
+					}
+					set_country_flag = thesis_filler_f
+				} # Biggest booms
+				1 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+						has_country_flag = thesis_filler_g_fail
+					}
+					set_country_flag = thesis_filler_g
+				} # Random free tech
+				1 = {
+					modifier = {
+						factor = 0
+						has_country_flag = yykex
+						NOT = { has_country_flag = thesis_filler_g_fail }
+					}
+					set_country_flag = thesis_filler_h
+				} # Planet gains district
+			}
+			complete_crisis_objective = crisobj_research_thesis
+		}
+	}
+
+	option = {
+		name = crisis.7265.a
+		trigger = {
+			has_country_flag = thesis_filler_a
+		}
+		add_resource = {
+			alloys = 10000
+		}
+		custom_tooltip = add_crisis_currency_tt
+	}
+	option = {
+		name = crisis.7265.b
+		trigger = {
+			has_country_flag = thesis_filler_b
+		}
+		random_owned_planet = {
+			limit = {
+				NOT = { is_planet_class = pc_cosmogenesis_world }
+			}
+			add_modifier = {
+				modifier = cosmogenesis_sped_up
+				days = -1
+			}
+		}
+		custom_tooltip = add_crisis_currency_tt
+	}
+	option = {
+		name = crisis.7265.c
+		trigger = {
+			has_country_flag = thesis_filler_c
+		}
+		add_modifier = {
+			modifier = cosmogenesis_superconductor
+			days = -1
+		}
+		custom_tooltip = add_crisis_currency_tt
+	}
+	option = {
+		name = crisis.7265.d
+		trigger = {
+			has_country_flag = thesis_filler_d
+		}
+		hidden_effect = {
+			add_resource = {
+				advanced_logic = 3000
+			}
+		}
+		custom_tooltip = add_crisis_currency_doubled_tt
+	}
+	option = {
+		name = crisis.7265.e
+		trigger = {
+			has_country_flag = thesis_filler_e
+		}
+		add_modifier = {
+			modifier = cosmogenesis_space_compression
+			days = -1
+		}
+		custom_tooltip = add_crisis_currency_tt
+	}
+	option = {
+		name = crisis.7265.f
+		trigger = {
+			has_country_flag = thesis_filler_f
+		}
+		add_modifier = {
+			modifier = cosmogenesis_higher_yield_payloads
+			days = -1
+		}
+		custom_tooltip = add_crisis_currency_tt
+	}
+	option = {
+		name = crisis.7265.g
+		trigger = {
+			has_country_flag = thesis_filler_g
+		}
+		add_random_research_option = {
+			add_progress = 1
+			ignore_rare = no
+			fail_effects = {
+				set_country_flag = thesis_filler_g_fail
+				add_monthly_resource_mult = {
+					resource = physics_research
+					value = @tier5researchreward
+					min = @tier5researchmin
+					max = @tier5researchmax
+				}
+			}
+		}
+		custom_tooltip = add_crisis_currency_tt
+	}
+	option = {
+		name = crisis.7265.h
+		trigger = {
+			has_country_flag = thesis_filler_h
+		}
+		random_owned_planet = {
+			limit = {
+				is_artificial = no
+			}
+			add_modifier = {
+				modifier = cosmogenesis_slightly_bigger
+				days = -1
+			}
+		}
+		custom_tooltip = add_crisis_currency_tt
+	}
+	after = {
+		remove_country_flag = thesis_filler_a
+		remove_country_flag = thesis_filler_b
+		remove_country_flag = thesis_filler_c
+		remove_country_flag = thesis_filler_d
+		remove_country_flag = thesis_filler_e
+		remove_country_flag = thesis_filler_f
+		remove_country_flag = thesis_filler_g
+		remove_country_flag = thesis_filler_h
+	}
+}
+
+namespace = situation
+
+#situation_events
+
+planet_event = { # 我和朋友一定会获得位面之魇游行局势的好结果
+	id = situation.1090
+	title = situation.1090.name
+	location = this
+	desc = {
+		trigger = {
+			has_modifier = horror_study_trophy2
+		}
+		text = situation.1090.desc.study
+	}
+	desc = {
+		trigger = {
+			has_modifier = horror_deify_trophy2
+		}
+		text = situation.1090.desc.deify
+	}
+	picture = GFX_evt_surreal_visions
+	is_triggered_only = yes
+
+	option = {
+		trigger = { has_modifier = horror_study_trophy2 }
+		name = situation.1090.a
+		remove_modifier = horror_study_trophy2
+		add_modifier = { modifier = horror_too_late }
+		hidden_effect = {
+			planet_event = { id = situation.1095 days = 720 }
+			random_list = { #To make it harder to savescum the outcome.
+				2 = {
+					modifier = {
+						factor = 0
+						OR = {
+							owner = { has_country_flag = yykex }
+							owner = { has_country_flag = yykex_friend }
+						}
+					}
+					set_planet_flag = black_hole_horror
+				}
+				1 = { set_planet_flag = stabilized_horror }
+			}
+		}
+		add_planet_devastation = 10
+	}
+	option = {
+		trigger = { has_modifier = horror_deify_trophy2 }
+		name = situation.1090.b
+		remove_modifier = horror_deify_trophy2
+		add_modifier = { modifier = horror_too_late }
+		hidden_effect = {
+			planet_event = { id = situation.1095 days = 720 }
+			random_list = { #To make it harder to savescum the outcome.
+				2 = {
+					modifier = {
+						factor = 0
+						OR = {
+							owner = { has_country_flag = yykex }
+							owner = { has_country_flag = yykex_friend }
+						}
+					}
+					set_planet_flag = black_hole_horror
+				}
+				1 = { set_planet_flag = stabilized_horror }
+			}
+		}
+		add_planet_devastation = 10
+	}
+	option = {
+		allow = { owner = { is_fanatic_materialist = no } }
+		name = situation.1090.c
+		if = {
+			limit = { has_modifier = horror_deify_trophy2 }
+			remove_modifier = horror_deify_trophy2
+		}
+		else = {
+			remove_modifier = horror_study_trophy2
+		}
+		add_planet_devastation = 99
+	}
+}

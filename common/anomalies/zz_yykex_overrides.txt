@@ -1,0 +1,122 @@
+#01_anomaly_categories
+
+DIMENSIONAL_POCKET_CAT = {
+	desc = "DIMENSIONAL_POCKET_DESC"
+	picture = "GFX_evt_mining_station"
+	level = 6
+
+	spawn_chance = {
+		modifier = {
+			add = 3
+			is_asteroid = yes
+		}
+	}
+
+	on_success = {
+		1 = anomaly.210
+		1 = {
+			modifier = {
+				factor = 0
+				owner = { has_country_flag = yykex }
+			}
+			anomaly_event = anomaly.295
+		}
+	}
+}
+
+#02_anomaly_categories
+
+COLD_RESEARCH_CAT = {
+	desc = "COLD_RESEARCH_DESC"
+	picture = "GFX_evt_tundra"
+	level = 3
+
+	spawn_chance = {
+		modifier = {
+			add = 3
+			OR = {
+				is_planet_class = pc_frozen
+				is_planet_class = pc_barren_cold
+			}
+		}
+	}
+
+	on_success = {
+		1 = {
+			modifier = {
+				factor = 0
+				owner = { is_gestalt = yes }
+			}
+			modifier = {
+				factor = 0
+				from = { has_any_strategic_resource = yes }
+			}
+			modifier = {
+				factor = 0
+				owner = { has_country_flag = yykex }
+			}
+			anomaly_event = anomaly.4055
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				owner = { has_policy_flag = interference_not_allowed }
+			}
+			anomaly_event = anomaly.4075
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				owner = { is_gestalt = yes }
+			}
+			modifier = {
+				factor = 0
+				owner = { has_country_flag = yykex }
+			}
+			anomaly_event = anomaly.4120
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				owner = {
+					OR = {
+						is_gestalt = yes
+						has_country_flag = masters_writings_philosophy_found
+						has_country_flag = anomaly_140_triggered
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				owner = { has_country_flag = yykex }
+			}
+			anomaly_event = anomaly.4140
+		}
+	}
+}
+
+#95_anomaly_categories_distant_stars
+
+disco_gray_cat = {
+	desc = "disco_gray_cat_desc"
+	picture = "GFX_evt_ship_in_orbit_2"
+	level = 3
+
+	spawn_chance = {
+		modifier = {
+			add = 1000
+			is_planet_class = pc_gray_goo
+			solar_system = { has_star_flag = lcluster }
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_global_flag = gray_goo_crisis_set
+				has_global_flag = dragon_season
+				has_global_flag = gray_goo_empire_set
+			}
+		}
+	}
+
+	on_success = graygoo.400
+}
