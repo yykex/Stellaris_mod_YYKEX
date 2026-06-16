@@ -1,0 +1,70 @@
+# YYKEX strategic resource overrides
+# common/strategic_resources follows FIOS; keep this file alphabetically before vanilla 00_strategic_resources.txt.
+# Changes:
+# - influence max 1000 -> 1000000, disables fixed_max_amount
+# - minor_artifacts max 2000 -> 2000000, disables special_max_amount
+# - astral_threads max 500 -> 500000, disables special_max_amount
+
+influence = {
+	category = other
+	max = 1000000
+	tooltip_decimals = 1
+	#fixed_max_amount = yes
+
+	deficit_modifier = influence_deficit #found in static modifiers
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+minor_artifacts = {
+	tradable = no
+	category = rare
+	max = 2000000
+	#special_max_amount = yes
+
+	visibility_prerequisite = { has_ancrel = yes }
+
+	deficit_trade_conversion_mult = -0.50
+
+	culling_conversion_value = 10
+
+	ai_weight = {
+		weight = 100
+	}
+
+	ai_wants = {
+		base = 5
+	}
+}
+
+astral_threads = {
+	tradable = no
+	category = rare
+	max = 500000
+	#special_max_amount = yes
+
+	deficit_trade_conversion_mult = -0.50
+
+	dynamic_capacity = {
+		base = @astral_threads_capacity_from_each_explored_rift
+		complex_trigger_modifier = {
+			trigger = astral_rifts_completed
+			mode = mult
+		}
+	}
+
+	prerequisites = { "tech_astral_harvesting" }
+	visibility_prerequisite = { has_astral_planes_dlc = yes }
+
+	culling_conversion_value = 5
+
+	ai_weight = {
+		weight = 100
+	}
+
+	ai_wants = {
+		base = 5
+	}
+}
