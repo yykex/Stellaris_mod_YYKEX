@@ -1,0 +1,182 @@
+yyk_ancrel_4000 = {  #石中低语考古遗迹
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner 
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_capital = no
+		NOT = {
+			any_country = {
+				has_country_flag = discovered_lithoids_arc_site
+			}
+		}
+		
+	}
+	allow ={
+		num_districts = { type = district_mining value > 1 }
+		NOT = { exists = archaeological_site }
+		NOT = { has_planet_flag = suppress_archaeological_sites }
+		owner = { has_technology = tech_mining_3 }
+	}
+    effect = {
+		owner = { set_country_flag = discovered_lithoids_arc_site }
+		planet_event = { id = ancrel.4000 days = 0 random = 0 }
+    }
+	
+}
+
+yyk_ancrel_6099 = {  #古墓考古遗迹（扎克兰的头颅）
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = zarqlan_spawned }
+		
+	}
+	allow ={
+		mid_game_years_passed >= 20
+	}
+    effect = {
+		from = {
+			set_global_flag = player_gets_zarqlan
+			set_global_flag = zarqlan_spawned
+			country_event = { id = ancrel.6099 days =0 random = 0 } 
+		}
+    }
+	
+}
+
+yyk_ancrel_4031 = {  #隐蔽星球考古遗迹（领袖：神谕）
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner 
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_capital = no
+		NOT = { exists = archaeological_site }
+		NOT = { has_planet_flag = suppress_archaeological_sites }
+		NOT = {
+			any_country = {
+				has_country_flag = triggered_the_oracle_digsite
+			}
+		}
+
+	}
+    effect = {
+		owner = {
+			set_country_flag = triggered_the_oracle_digsite
+		}
+		set_planet_flag = oracle_d_massive_glacier
+		planet_event = { id = ancrel.4031 days = 0 }
+    }
+	
+}
+
+yyk_ancrel_4051 = {  #哨兵考古遗迹
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner 
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_capital = no
+		NOT = { exists = archaeological_site }
+		NOT = { has_planet_flag = suppress_archaeological_sites }
+		NOT = {
+			any_country = {
+				has_country_flag = triggered_the_sentinels_digsite
+			}
+		}
+
+	}
+    effect = {
+		owner = {
+			set_country_flag = triggered_the_sentinels_digsite
+		}
+		set_planet_flag = sentinels_d_massive_glacier
+		planet_event = { id = ancrel.4051 days = 0 }
+    }
+	
+}
+
+yyk_ancrel_6049 = {  #化石遗骸考古遗迹（遗珍：女猎手之刃）
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner 
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_capital = no
+		NOT = { exists = archaeological_site }
+		NOR = {
+			has_global_flag = arc_hunting_grounds
+			has_planet_flag = colony_event
+			has_planet_flag = suppress_archaeological_sites
+		}
+
+	}
+	allow ={
+		pop_amount > 0
+		OR = {
+			is_planet_class = pc_desert
+			is_planet_class = pc_tropical
+			is_planet_class = pc_arid
+			is_planet_class = pc_continental
+			is_planet_class = pc_ocean
+			is_planet_class = pc_tundra
+			is_planet_class = pc_arctic
+			is_planet_class = pc_alpine
+			is_planet_class = pc_savannah
+		}
+	}
+    effect = {
+		planet_event = { id = ancrel.6049 days = 0 }
+    }
+	
+}

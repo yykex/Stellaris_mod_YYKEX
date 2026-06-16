@@ -1,0 +1,17 @@
+yyk_change_pc_relic_size = {
+    potential = {
+		exists = owner 
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_capital = no
+		is_planet_class = pc_relic
+        planet_size < 25
+	}
+
+    effect = {
+        set_planet_size = 25
+    }
+
+}

@@ -1,0 +1,8 @@
+NGameplay = {
+    NAVAL_CAPACITY_MAX										= 99999	# Max value of Naval Capacity
+    STARBASE_CAPACITY_SYSTEM_MULT							= 0.20 # Mult value of Starbase Capacity for each owned system
+    ETHOS_MAX_POINTS					= 4	# Number of points which you can spend on ethos.
+    #GOVERNMENT_CIVIC_POINTS_BASE		= 7		# Base amount of civic points (to "pay" for government civic costs)
+    TRADITION_CATEGORIES_MAX	= 11
+	ASCENSION_PERKS_SLOTS		= 12
+}

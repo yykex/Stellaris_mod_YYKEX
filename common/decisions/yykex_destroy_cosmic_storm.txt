@@ -1,0 +1,51 @@
+yyk_destroy_cosmic_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		solar_system = { is_inside_storm = yes }
+	}
+    effect = {
+		solar_system = {
+			every_cosmic_storm = {
+				limit = { any_system_within_storm = { is_same_value = prevprev } } 
+				destroy_cosmic_storm = yes 
+			}
+		}
+    }
+
+}
+
+yyk_destroy_all_cosmic_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+		solar_system = { is_capital_system = yes }
+	}
+    effect = {
+		every_cosmic_storm = { destroy_cosmic_storm = yes }
+    }
+
+}

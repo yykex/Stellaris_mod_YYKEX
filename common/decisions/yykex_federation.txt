@@ -1,0 +1,83 @@
+yyk_subject_assign_leader_to_federation = {
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+            OR = {
+                has_country_flag = yykex
+                has_country_flag = yykex_friend
+            }
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        every_country = {
+            limit = {
+                is_subject = yes
+                has_federation = yes
+                overlord = { is_same_value = prev.from }
+                NOT = { has_country_flag = yykex_friend }
+                NOT = { has_country_flag = yykex_subject_assign_leader_to_federation }
+            }
+            set_country_flag = yykex_subject_assign_leader_to_federation
+            create_leader = {
+                class = official
+                species = this
+                skill = 6
+                name = random
+                event_leader = yes
+                randomize_traits = no
+                #can_manually_change_location = no
+                traits = {
+					1 = subclass_official_delegate
+                    2 = leader_trait_federal_negotiator_3
+                    3 = leader_trait_federal_joint_navy_3
+                    4 = leader_trait_eager
+                    5 = leader_trait_resilient
+                    6 = leader_trait_emotional_support_pet
+				}
+                effect = {
+                    set_leader_flag = should_not_have_upkeep
+                    set_leader_flag = immune_to_negative_traits		
+                }
+            }
+            last_created_leader = {
+                set_skill = 10
+                set_variable = {
+					which = "leader_pending_negative_traits_unmodified"
+					value = 0
+				}
+                if = {
+					limit = { species = { has_trait = trait_erudite } }
+					add_trait = leader_trait_erudite
+				}
+				if = {
+					limit = {species = { has_trait = trait_cybernetic } }
+					add_trait = leader_trait_cyborg
+				}
+				if = {
+					limit = {species = { has_trait = trait_psionic } }
+					add_trait = leader_trait_psionic
+				}
+                set_owner = prev
+            }
+            random_owned_leader = {
+                limit = { is_assigned_to_federation = yes }
+                unassign_leader = this
+            }
+            #federation = {
+            #    assign_leader = last_created_leader
+            #}
+        }
+    }
+}

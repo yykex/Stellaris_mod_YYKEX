@@ -1,0 +1,599 @@
+yyk_create_fallen_empire_1_fleet = {   #知管
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        create_fleet = {
+            name = random
+            settings = {
+                can_upgrade = yes
+                can_change_composition = yes
+                can_change_leader = yes
+                spawn_debris = yes
+                uses_naval_capacity = yes
+                can_disband = yes
+                is_boss = no
+                is_ultra_boss = no
+            }
+            effect = {
+                set_owner = root.from
+                while = {
+                    count = 5
+                    create_ship = {
+                        name = random
+                        design = "NAME_Savant"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_01"
+                        prefix = no
+                    }
+                }
+                while = {
+                    count = 30
+                    create_ship = {
+                        name = random
+                        design = "NAME_Scholar"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_01"
+                        prefix = no
+                    }
+                }
+                while = {
+                    count = 25
+                    create_ship = {
+                        name = random
+                        design = "NAME_Sage"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_01"
+                        prefix = no
+                    }
+                }
+                set_formation_scale = 1
+                set_location = root
+            }
+        }
+        create_fleet = {
+            name = random
+            settings = {
+                can_upgrade = yes
+                can_change_composition = yes
+                can_change_leader = yes
+                spawn_debris = yes
+                uses_naval_capacity = yes
+                can_disband = yes
+                is_boss = no
+                is_ultra_boss = no
+            }
+            effect = {
+                set_owner = root.from
+                while = {
+                    count = 10
+                    create_ship = {
+                        name = random
+                        design = "NAME_Scholar"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_01"
+                        prefix = no
+                    }
+                }
+                set_formation_scale = 1
+                set_location = root
+            }
+        }
+    }
+}
+
+yyk_create_fallen_empire_1_colossus = {   #知管
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        while = {
+            count = 5
+            create_fleet = {
+                name = random
+                settings = {
+                    can_upgrade = yes
+                    can_change_composition = yes
+                    can_change_leader = yes
+                    spawn_debris = yes
+                    uses_naval_capacity = yes
+                    can_disband = yes
+                    is_boss = no
+                    is_ultra_boss = no
+                }
+                effect = {
+                    set_owner = root.from
+                    create_ship = {
+                        name = random
+                        design = "NAME_Enforcer"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_01"
+                        prefix = no
+                    }
+                    set_formation_scale = 1
+                    set_location = root
+                }
+            }
+        }
+    }
+}
+
+yyk_create_fallen_empire_2_fleet = {   #圣卫
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        create_fleet = {
+            name = random
+            settings = {
+                can_upgrade = yes
+                can_change_composition = yes
+                can_change_leader = yes
+                spawn_debris = yes
+                uses_naval_capacity = yes
+                can_disband = yes
+                is_boss = no
+                is_ultra_boss = no
+            }
+            effect = {
+                set_owner = root.from
+                while = {
+                    count = 5
+                    create_ship = {
+                        name = random
+                        design = "NAME_Eternal"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_02"
+                        prefix = no
+                    }
+                }
+                while = {
+                    count = 30
+                    create_ship = {
+                        name = random
+                        design = "NAME_Avatar"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_02"
+                        prefix = no
+                    }
+                }
+                while = {
+                    count = 25
+                    create_ship = {
+                        name = random
+                        design = "NAME_Zealot"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_02"
+                        prefix = no
+                    }
+                }
+                set_formation_scale = 1
+                set_location = root
+            }
+        }
+        create_fleet = {
+            name = random
+            settings = {
+                can_upgrade = yes
+                can_change_composition = yes
+                can_change_leader = yes
+                spawn_debris = yes
+                uses_naval_capacity = yes
+                can_disband = yes
+                is_boss = no
+                is_ultra_boss = no
+            }
+            effect = {
+                set_owner = root.from
+                while = {
+                    count = 10
+                    create_ship = {
+                        name = random
+                        design = "NAME_Avatar"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_02"
+                        prefix = no
+                    }
+                }
+                set_formation_scale = 1
+                set_location = root
+            }
+        }
+    }
+}
+
+yyk_create_fallen_empire_2_colossus = {   #圣卫
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        while = {
+            count = 5
+            create_fleet = {
+                name = random
+                settings = {
+                    can_upgrade = yes
+                    can_change_composition = yes
+                    can_change_leader = yes
+                    spawn_debris = yes
+                    uses_naval_capacity = yes
+                    can_disband = yes
+                    is_boss = no
+                    is_ultra_boss = no
+                }
+                effect = {
+                    set_owner = root.from
+                    create_ship = {
+                        name = random
+                        design = "NAME_Cleanser"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_02"
+                        prefix = no
+                    }
+                    set_formation_scale = 1
+                    set_location = root
+                }
+            }
+        }
+    }
+}
+
+yyk_create_fallen_empire_3_fleet = {   #秘观
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        create_fleet = {
+            name = random
+            settings = {
+                can_upgrade = yes
+                can_change_composition = yes
+                can_change_leader = yes
+                spawn_debris = yes
+                uses_naval_capacity = yes
+                can_disband = yes
+                is_boss = no
+                is_ultra_boss = no
+            }
+            effect = {
+                set_owner = root.from
+                while = {
+                    count = 5
+                    create_ship = {
+                        name = random
+                        design = "NAME_Keeper"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_03"
+                        prefix = no
+                    }
+                }
+                while = {
+                    count = 30
+                    create_ship = {
+                        name = random
+                        design = "NAME_Custodian"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_03"
+                        prefix = no
+                    }
+                }
+                while = {
+                    count = 25
+                    create_ship = {
+                        name = random
+                        design = "NAME_Overseer"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_03"
+                        prefix = no
+                    }
+                }
+                set_formation_scale = 1
+                set_location = root
+            }
+        }
+        create_fleet = {
+            name = random
+            settings = {
+                can_upgrade = yes
+                can_change_composition = yes
+                can_change_leader = yes
+                spawn_debris = yes
+                uses_naval_capacity = yes
+                can_disband = yes
+                is_boss = no
+                is_ultra_boss = no
+            }
+            effect = {
+                set_owner = root.from
+                while = {
+                    count = 10
+                    create_ship = {
+                        name = random
+                        design = "NAME_Custodian"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_03"
+                        prefix = no
+                    }
+                }
+                set_formation_scale = 1
+                set_location = root
+            }
+        }
+    }
+}
+
+yyk_create_fallen_empire_3_colossus = {   #秘观
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        while = {
+            count = 5
+            create_fleet = {
+                name = random
+                settings = {
+                    can_upgrade = yes
+                    can_change_composition = yes
+                    can_change_leader = yes
+                    spawn_debris = yes
+                    uses_naval_capacity = yes
+                    can_disband = yes
+                    is_boss = no
+                    is_ultra_boss = no
+                }
+                effect = {
+                    set_owner = root.from
+                    create_ship = {
+                        name = random
+                        design = "NAME_Adjuster"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_03"
+                        prefix = no
+                    }
+                    set_formation_scale = 1
+                    set_location = root
+                }
+            }
+        }
+    }
+}
+
+yyk_create_fallen_empire_4_fleet = {   #军孤
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        create_fleet = {
+            name = random
+            settings = {
+                can_upgrade = yes
+                can_change_composition = yes
+                can_change_leader = yes
+                spawn_debris = yes
+                uses_naval_capacity = yes
+                can_disband = yes
+                is_boss = no
+                is_ultra_boss = no
+            }
+            effect = {
+                set_owner = root.from
+                while = {
+                    count = 5
+                    create_ship = {
+                        name = random
+                        design = "NAME_Imperium"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_04"
+                        prefix = no
+                    }
+                }
+                while = {
+                    count = 30
+                    create_ship = {
+                        name = random
+                        design = "NAME_Supremacy"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_04"
+                        prefix = no
+                    }
+                }
+                while = {
+                    count = 25
+                    create_ship = {
+                        name = random
+                        design = "NAME_Glory"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_04"
+                        prefix = no
+                    }
+                }
+                set_formation_scale = 1
+                set_location = root
+            }
+        }
+        create_fleet = {
+            name = random
+            settings = {
+                can_upgrade = yes
+                can_change_composition = yes
+                can_change_leader = yes
+                spawn_debris = yes
+                uses_naval_capacity = yes
+                can_disband = yes
+                is_boss = no
+                is_ultra_boss = no
+            }
+            effect = {
+                set_owner = root.from
+                while = {
+                    count = 10
+                    create_ship = {
+                        name = random
+                        design = "NAME_Supremacy"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_04"
+                        prefix = no
+                    }
+                }
+                set_formation_scale = 1
+                set_location = root
+            }
+        }
+    }
+}
+
+yyk_create_fallen_empire_4_colossus = {   #军孤
+    sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+    effect = {
+        while = {
+            count = 5
+            create_fleet = {
+                name = random
+                settings = {
+                    can_upgrade = yes
+                    can_change_composition = yes
+                    can_change_leader = yes
+                    spawn_debris = yes
+                    uses_naval_capacity = yes
+                    can_disband = yes
+                    is_boss = no
+                    is_ultra_boss = no
+                }
+                effect = {
+                    set_owner = root.from
+                    create_ship = {
+                        name = random
+                        design = "NAME_Reaper"
+                        upgradable = yes
+                        graphical_culture = "fallen_empire_04"
+                        prefix = no
+                    }
+                    set_formation_scale = 1
+                    set_location = root
+                }
+            }
+        }
+    }
+}

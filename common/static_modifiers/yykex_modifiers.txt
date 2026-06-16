@@ -1,0 +1,22 @@
+yykex_covenant_composer_of_strands_np = {
+	BIOLOGICAL_species_trait_picks_add = 2
+}
+yykex_empire_size_penalty_mult_100 = {
+	empire_size_penalty_mult = -1.0
+}
+yykex_empire_size_penalty_mult_95 = {
+	empire_size_penalty_mult = -0.95
+}
+yykex_empire_size_penalty_mult_90 = {
+	empire_size_penalty_mult = -0.9
+}
+yykex_machine_species_trait_add = {
+	MACHINE_species_trait_points_add = 54
+	MACHINE_species_trait_picks_add = 21
+}
+yykex_num_tech_alternatives_add = {
+	num_tech_alternatives_add = 20
+}
+yykex_ascension_perks_add = {
+	ascension_perks_add = 4
+}

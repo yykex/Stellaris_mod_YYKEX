@@ -1,0 +1,22 @@
+yyk_remove_planet_devastation = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		planet_devastation > 0
+	}
+    effect = {
+		add_planet_devastation = -100
+    }
+
+}

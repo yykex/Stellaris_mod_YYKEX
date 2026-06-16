@@ -1,0 +1,604 @@
+yyk_grand_archive_2300 = {  #虚空虫危机
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = voidworms_plague_crisis_started }
+	}
+	allow = {
+		mid_game_years_passed >= 0
+		end_game_years_passed < 0
+	}
+    effect = {
+		every_country = {
+			limit = { is_country_type = voidworms }
+			country_event = { id = grand_archive.2300 days = 0 }
+		}
+    }
+	
+}
+
+yyk_astral_planes_10 = {  #晶体裂隙生成
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+		NOT = { has_global_flag = crystal_sphere_sent }
+	}
+	allow = {
+		mid_game_years_passed > 0
+		solar_system = {
+			has_natural_wormhole = no
+			NOR = {
+				has_star_flag = shroud_tunnel_nexus
+				has_star_flag = shroud_tunnel_node
+				has_star_flag = sol_system
+				is_capital_system = yes
+			}
+		}
+	}
+	effect = {
+		set_global_flag = crystal_sphere_sent
+		solar_system = {
+			set_star_flag = crystal_sphere_system
+			save_global_event_target_as = crystal_sphere_system
+		}
+		from = {
+			country_event = { id = astral_planes.15 days = 0 random = 0 }
+		}
+	}
+}
+
+yyk_central_2 = {  #水晶之国
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_global_flag = yyk_central_2 }
+        }
+		is_star = yes
+	}
+	effect = {
+		set_global_flag = central_crystal_flag
+		from = {
+			country_event = { id = central.2 days = 0 random = 0}
+		}
+		set_global_flag = yyk_central_2
+	}
+}
+
+yyk_situation_2002 = {  #太空之彩（万华镜）事件
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+		NOT = { has_global_flag = kaleidoscope_started }
+	}
+	allow = {
+		mid_game_years_passed > 0
+	}
+	effect = {
+		set_global_flag = kaleidoscope_will_spawn
+		from = {
+			country_event = { id = situation.2002 days = 0 random = 0}
+		}
+	}
+}
+
+yyk_situation_500 = {  #重力井事件
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = gravity_well_happened }
+        }
+		is_star = yes
+		solar_system = { is_star_class = sc_black_hole }
+	}
+	allow = {
+		solar_system = {
+			starbase = {
+				has_starbase_building = black_hole_observatory
+				has_starbase_size >= starbase_starfortress
+			}
+		}
+	}
+	effect = {
+		from = {
+			country_event = { id = situation.500 days = 0 random = 0}
+		}
+	}
+}
+
+yyk_paragon_3010 = {    #坏羽病
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = skrand_recruited
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_paragon_3010 }
+	}
+
+	effect = {
+		from = {
+			country_event = { id = paragon.3010 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_paragon_3010
+	}
+}
+
+yyk_paragon_3030 = {    #指挥问题
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = skrand_recruited
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_paragon_3030 }
+	}
+
+	effect = {
+		from = {
+			country_event = { id = paragon.3030 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_paragon_3030
+	}
+}
+
+yyk_paragon_3060 = {    #利爪号研究
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = skrand_recruited
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_paragon_3060 }
+	}
+
+	effect = {
+		from = {
+			country_event = { id = paragon.3060 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_paragon_3060
+	}
+}
+
+yyk_paragon_3040 = {    #潜在升级
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = skrand_recruited
+			has_country_flag = studied_talon
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_paragon_3040 }
+	}
+
+	effect = {
+		from = {
+			country_event = { id = paragon.3040 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_paragon_3040
+	}
+}
+
+yyk_paragon_3050 = {    #最终飞航
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = skrand_recruited
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_paragon_3050 }
+		has_crisis = yes
+	}
+
+	effect = {
+		from = {
+			country_event = { id = paragon.3050 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_paragon_3050
+	}
+}
+
+yyk_paragon_3080 = {    #新希望
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = skrand_recruited
+			has_ascension_perk = ap_engineered_evolution
+			AND = {
+				has_policy_flag = purge_not_allowed
+				has_policy_flag = slavery_not_allowed
+			}
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_paragon_3080 }
+	}
+
+	effect = {
+		from = {
+			country_event = { id = paragon.3080 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_paragon_3080
+	}
+}
+
+yyk_paragon_3090 = {    #历史研究
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = skrand_recruited
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_paragon_3090 }
+	}
+
+	effect = {
+		from = {
+			country_event = { id = paragon.3090 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_paragon_3090
+	}
+}
+
+yyk_paragon_3020 = {    #舰载机
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = skrand_recruited
+			has_modifier = integrated_command
+			has_modifier = talon_hull
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_paragon_3020 }
+	}
+
+	effect = {
+		from = {
+			country_event = { id = paragon.3020 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_paragon_3020
+	}
+}
+
+yyk_leviathans_661 = {   #龙鳞甲
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = yyk_leviathans_661 }
+	}
+
+	allow = {
+		exists = event_target:guardian_dragon_planet
+		event_target:guardian_dragon_planet = {
+			NOT = { has_planet_flag = deboned }
+			has_mining_station = yes
+		}
+	}
+
+	effect = {
+		from = {
+			country_event = { id = leviathans.661 days = 0 random = 0 }
+		}
+		set_global_flag = yyk_leviathans_661
+	}
+}
+
+yyk_fallen_machine_empire_10 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			OR = {
+				has_country_flag = yykex
+				has_country_flag = yykex_friend
+			}
+			is_machine_empire = no
+			is_mechanical_empire = no
+			is_individual_machine = no
+			is_wilderness_empire = no
+			is_country_type = default
+			NOT = { has_country_flag = fe_machine_task_1 }
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+	
+	allow = {
+		exists = from 
+		from = {
+			any_country = {
+				is_valid_fallen_empire_for_task = yes
+				is_machine_empire = yes
+				is_enigmatic_to = prev
+				has_communications = prev
+				NOT = { has_opinion_modifier = { who = prev modifier = opinion_refused_fallen_empire_request } }
+				NOT = { has_opinion_modifier = { who = prev modifier = opinion_accepted_fallen_empire_request } }
+			}
+		}
+	}
+
+	effect = {
+		from = {
+			country_event = { id = fallen_machine_empire.10 days = 0 random = 0 }
+		}
+	}
+}
+
+yyk_fallen_machine_empire_20 = {   #机械爹改善代码任务
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			OR = {
+				has_country_flag = yykex
+				has_country_flag = yykex_friend
+			}
+			NOT = { has_country_flag = fe_machine_task_2 }
+			OR = {
+				is_machine_empire = yes
+				is_mechanical_empire = yes
+				is_individual_machine = yes
+			}
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+	
+	allow = {
+		exists = from 
+		from = {
+			any_country = {
+				is_valid_fallen_empire_for_task = yes
+				is_machine_empire = yes
+				is_enigmatic_to = prev
+				has_communications = prev
+				NOT = { has_opinion_modifier = { who = prev modifier = opinion_refused_fallen_empire_request } }
+				NOT = { has_opinion_modifier = { who = prev modifier = opinion_accepted_fallen_empire_request } }
+			}
+		}
+	}
+
+	effect = {
+		from = {
+			country_event = { id = fallen_machine_empire.20 days = 0 random = 0 }
+		}
+	}
+}
+
+yyk_fallen_machine_empire_23 = {   #机械爹改善代码任务好结果
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			OR = {
+				has_country_flag = yykex
+				has_country_flag = yykex_friend
+			}
+			has_modifier = machine_empire_code_rewrite
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+
+	effect = {
+		from = {
+			country_event = { id = fallen_machine_empire.23 days = 0 random = 0 }
+		}
+	}
+}
+
+yyk_marauder_500 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+		NOT = { has_global_flag = marauder_crisis_started }
+	}
+
+	allow = {
+		OR = {
+			AND = {
+				mid_game_years_passed >= 10
+				end_game_years_passed < 0
+			}
+			has_global_flag = horde_triggered
+		}
+	}
+
+	effect = {
+		random_country = {
+			limit = { has_country_flag = marauder_1 }
+			country_event = { id = marauder.500 days = 0 random = 0 }
+		}
+	}
+}

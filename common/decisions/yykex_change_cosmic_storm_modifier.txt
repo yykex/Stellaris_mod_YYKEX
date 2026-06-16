@@ -1,0 +1,437 @@
+yyk_add_cosmic_storm_modifier_close = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_cosmic_storm_modifier_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { set_country_flag = yykex_add_cosmic_storm_modifier_close }
+    }
+
+}
+
+yyk_add_cosmic_storm_modifier_open = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = yykex_add_cosmic_storm_modifier_close
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_country_flag = yykex_add_cosmic_storm_modifier_close }
+    }
+
+}
+
+yyk_remove_all_cosmic_storm_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			OR = {
+                has_country_flag = yykex
+                has_country_flag = yykex_friend
+            }
+        }
+        OR ={
+            has_modifier = "electric_storm_aftermath_modifier_severity_1"
+            has_modifier = "electric_storm_aftermath_modifier_severity_2"
+            has_modifier = "electric_storm_aftermath_modifier_severity_3"
+            has_modifier = "particle_storm_aftermath_modifier_severity_1"
+            has_modifier = "particle_storm_aftermath_modifier_severity_2"
+            has_modifier = "particle_storm_aftermath_modifier_severity_3"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_1"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_2"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_3"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+            has_modifier = "solar_storm_aftermath_modifier_severity_1"
+            has_modifier = "solar_storm_aftermath_modifier_severity_2"
+            has_modifier = "solar_storm_aftermath_modifier_severity_3"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_1"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_2"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_3"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_1"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_2"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_3"
+        }
+	}
+    effect = {
+		remove_modifier = "electric_storm_aftermath_modifier_severity_1"
+        remove_modifier = "electric_storm_aftermath_modifier_severity_2"
+        remove_modifier = "electric_storm_aftermath_modifier_severity_3"
+        remove_modifier = "particle_storm_aftermath_modifier_severity_1"
+        remove_modifier = "particle_storm_aftermath_modifier_severity_2"
+        remove_modifier = "particle_storm_aftermath_modifier_severity_3"
+        remove_modifier = "gravity_storm_aftermath_modifier_severity_1"
+        remove_modifier = "gravity_storm_aftermath_modifier_severity_2"
+        remove_modifier = "gravity_storm_aftermath_modifier_severity_3"
+        remove_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+        remove_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+        remove_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+        remove_modifier = "solar_storm_aftermath_modifier_severity_1"
+        remove_modifier = "solar_storm_aftermath_modifier_severity_2"
+        remove_modifier = "solar_storm_aftermath_modifier_severity_3"
+        remove_modifier = "celestial_storm_aftermath_modifier_severity_1"
+        remove_modifier = "celestial_storm_aftermath_modifier_severity_2"
+        remove_modifier = "celestial_storm_aftermath_modifier_severity_3"
+        remove_modifier = "shroud_storm_aftermath_modifier_severity_1"
+        remove_modifier = "shroud_storm_aftermath_modifier_severity_2"
+        remove_modifier = "shroud_storm_aftermath_modifier_severity_3"
+    }
+
+}
+
+yyk_add_electric_storm_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_cosmic_storm_modifier_close }
+        }
+        NOR ={
+            has_modifier = "electric_storm_aftermath_modifier_severity_1"
+            has_modifier = "electric_storm_aftermath_modifier_severity_2"
+            has_modifier = "electric_storm_aftermath_modifier_severity_3"
+            has_modifier = "particle_storm_aftermath_modifier_severity_1"
+            has_modifier = "particle_storm_aftermath_modifier_severity_2"
+            has_modifier = "particle_storm_aftermath_modifier_severity_3"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_1"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_2"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_3"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+            has_modifier = "solar_storm_aftermath_modifier_severity_1"
+            has_modifier = "solar_storm_aftermath_modifier_severity_2"
+            has_modifier = "solar_storm_aftermath_modifier_severity_3"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_1"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_2"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_3"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_1"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_2"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_3"
+        }
+	}
+    effect = {
+        add_modifier = { modifier = electric_storm_aftermath_modifier_severity_3 days = -1 }
+    }
+
+}
+
+yyk_add_particle_storm_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_cosmic_storm_modifier_close }
+        }
+        NOR ={
+            has_modifier = "electric_storm_aftermath_modifier_severity_1"
+            has_modifier = "electric_storm_aftermath_modifier_severity_2"
+            has_modifier = "electric_storm_aftermath_modifier_severity_3"
+            has_modifier = "particle_storm_aftermath_modifier_severity_1"
+            has_modifier = "particle_storm_aftermath_modifier_severity_2"
+            has_modifier = "particle_storm_aftermath_modifier_severity_3"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_1"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_2"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_3"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+            has_modifier = "solar_storm_aftermath_modifier_severity_1"
+            has_modifier = "solar_storm_aftermath_modifier_severity_2"
+            has_modifier = "solar_storm_aftermath_modifier_severity_3"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_1"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_2"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_3"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_1"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_2"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_3"
+        }
+	}
+    effect = {
+        add_modifier = { modifier = particle_storm_aftermath_modifier_severity_3 days = -1 }
+    }
+
+}
+
+yyk_add_gravity_storm_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_cosmic_storm_modifier_close }
+        }
+        NOR ={
+            has_modifier = "electric_storm_aftermath_modifier_severity_1"
+            has_modifier = "electric_storm_aftermath_modifier_severity_2"
+            has_modifier = "electric_storm_aftermath_modifier_severity_3"
+            has_modifier = "particle_storm_aftermath_modifier_severity_1"
+            has_modifier = "particle_storm_aftermath_modifier_severity_2"
+            has_modifier = "particle_storm_aftermath_modifier_severity_3"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_1"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_2"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_3"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+            has_modifier = "solar_storm_aftermath_modifier_severity_1"
+            has_modifier = "solar_storm_aftermath_modifier_severity_2"
+            has_modifier = "solar_storm_aftermath_modifier_severity_3"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_1"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_2"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_3"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_1"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_2"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_3"
+        }
+	}
+    effect = {
+        add_modifier = { modifier = gravity_storm_aftermath_modifier_severity_3 days = -1 }
+    }
+
+}
+
+yyk_add_magnetic_storm_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_cosmic_storm_modifier_close }
+        }
+        NOR ={
+            has_modifier = "electric_storm_aftermath_modifier_severity_1"
+            has_modifier = "electric_storm_aftermath_modifier_severity_2"
+            has_modifier = "electric_storm_aftermath_modifier_severity_3"
+            has_modifier = "particle_storm_aftermath_modifier_severity_1"
+            has_modifier = "particle_storm_aftermath_modifier_severity_2"
+            has_modifier = "particle_storm_aftermath_modifier_severity_3"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_1"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_2"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_3"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+            has_modifier = "solar_storm_aftermath_modifier_severity_1"
+            has_modifier = "solar_storm_aftermath_modifier_severity_2"
+            has_modifier = "solar_storm_aftermath_modifier_severity_3"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_1"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_2"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_3"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_1"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_2"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_3"
+        }
+	}
+    effect = {
+        add_modifier = { modifier = magnetic_storm_aftermath_modifier_severity_3 days = -1 }
+    }
+
+}
+
+yyk_add_solar_storm_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_cosmic_storm_modifier_close }
+        }
+        NOR ={
+            has_modifier = "electric_storm_aftermath_modifier_severity_1"
+            has_modifier = "electric_storm_aftermath_modifier_severity_2"
+            has_modifier = "electric_storm_aftermath_modifier_severity_3"
+            has_modifier = "particle_storm_aftermath_modifier_severity_1"
+            has_modifier = "particle_storm_aftermath_modifier_severity_2"
+            has_modifier = "particle_storm_aftermath_modifier_severity_3"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_1"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_2"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_3"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+            has_modifier = "solar_storm_aftermath_modifier_severity_1"
+            has_modifier = "solar_storm_aftermath_modifier_severity_2"
+            has_modifier = "solar_storm_aftermath_modifier_severity_3"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_1"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_2"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_3"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_1"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_2"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_3"
+        }
+	}
+    effect = {
+        add_modifier = { modifier = solar_storm_aftermath_modifier_severity_3 days = -1 }
+    }
+
+}
+
+yyk_add_celestial_storm_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_cosmic_storm_modifier_close }
+        }
+        NOR ={
+            has_modifier = "electric_storm_aftermath_modifier_severity_1"
+            has_modifier = "electric_storm_aftermath_modifier_severity_2"
+            has_modifier = "electric_storm_aftermath_modifier_severity_3"
+            has_modifier = "particle_storm_aftermath_modifier_severity_1"
+            has_modifier = "particle_storm_aftermath_modifier_severity_2"
+            has_modifier = "particle_storm_aftermath_modifier_severity_3"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_1"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_2"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_3"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+            has_modifier = "solar_storm_aftermath_modifier_severity_1"
+            has_modifier = "solar_storm_aftermath_modifier_severity_2"
+            has_modifier = "solar_storm_aftermath_modifier_severity_3"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_1"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_2"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_3"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_1"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_2"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_3"
+        }
+	}
+    effect = {
+        add_modifier = { modifier = celestial_storm_aftermath_modifier_severity_3 days = -1 }
+    }
+
+}
+
+yyk_add_shroud_storm_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_cosmic_storm_modifier_close }
+        }
+        NOR ={
+            has_modifier = "electric_storm_aftermath_modifier_severity_1"
+            has_modifier = "electric_storm_aftermath_modifier_severity_2"
+            has_modifier = "electric_storm_aftermath_modifier_severity_3"
+            has_modifier = "particle_storm_aftermath_modifier_severity_1"
+            has_modifier = "particle_storm_aftermath_modifier_severity_2"
+            has_modifier = "particle_storm_aftermath_modifier_severity_3"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_1"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_2"
+            has_modifier = "gravity_storm_aftermath_modifier_severity_3"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_1"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_2"
+            has_modifier = "magnetic_storm_aftermath_modifier_severity_3"
+            has_modifier = "solar_storm_aftermath_modifier_severity_1"
+            has_modifier = "solar_storm_aftermath_modifier_severity_2"
+            has_modifier = "solar_storm_aftermath_modifier_severity_3"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_1"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_2"
+            has_modifier = "celestial_storm_aftermath_modifier_severity_3"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_1"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_2"
+            has_modifier = "shroud_storm_aftermath_modifier_severity_3"
+        }
+	}
+    effect = {
+        add_modifier = { modifier = shroud_storm_aftermath_modifier_severity_3 days = -1 }
+    }
+
+}

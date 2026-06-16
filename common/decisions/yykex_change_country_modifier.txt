@@ -1,0 +1,299 @@
+yyk_add_country_modifier_close = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { set_country_flag = yykex_add_country_modifier_close }
+    }
+
+}
+
+yyk_add_country_modifier_open = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = yykex_add_country_modifier_close
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_country_flag = yykex_add_country_modifier_close }
+    }
+
+}
+
+yyk_remove_relic_activation_cooldown_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			has_modifier = "relic_activation_cooldown"
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_modifier = relic_activation_cooldown }
+    }
+
+}
+
+yyk_remove_arcane_deciphering_cooldown_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			has_modifier = "arcane_deciphering_cooldown"
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_modifier = arcane_deciphering_cooldown }
+    }
+
+}
+
+yyk_remove_artifact_find_applications_cooldown_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			has_modifier = "artifact_find_applications_cooldown"
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_modifier = artifact_find_applications_cooldown }
+    }
+
+}
+
+yyk_remove_artifact_lgate_insight_cooldown_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			has_modifier = "artifact_lgate_insight_cooldown"
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_modifier = artifact_lgate_insight_cooldown }
+    }
+
+}
+
+yyk_remove_artifact_precursor_insight_cooldown_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			has_modifier = "artifact_precursor_insight_cooldown"
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_modifier = artifact_precursor_insight_cooldown }
+    }
+
+}
+
+
+yyk_remove_artifact_sell_cooldown_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			has_modifier = "artifact_sell_cooldown"
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_modifier = artifact_sell_cooldown }
+    }
+
+}
+
+yyk_remove_shroud_cooldown_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			has_modifier = "shroud_cooldown"
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_modifier = shroud_cooldown }
+    }
+
+}
+
+yyk_add_pheromone_cocktail_best_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			NOT = { has_modifier = "pheromone_cocktail_best" }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_modifier = { modifier = pheromone_cocktail_best days = -1 } }
+    }
+
+}
+
+
+yyk_add_universal_translator_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			NOT = { has_modifier = "universal_translator" }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_modifier = { modifier = universal_translator days = -1 } }
+    }
+
+}
+
+yyk_add_space_lights_insights_country_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_country_modifier_close }
+			NOT = { has_modifier = "space_lights_insights" }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_modifier = { modifier = space_lights_insights days = -1 } }
+    }
+
+}

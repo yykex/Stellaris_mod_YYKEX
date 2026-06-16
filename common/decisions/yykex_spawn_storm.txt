@@ -1,0 +1,370 @@
+yyk_spawn_storm_close = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_capital = yes
+		owner = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		owner = {
+			set_country_flag = yykex_spawn_storm_stop
+		}
+    }
+
+}
+
+yyk_spawn_storm_open = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_capital = yes
+		owner = { has_country_flag = yykex_spawn_storm_stop }
+	}
+    effect = {
+		owner = {
+			remove_country_flag = yykex_spawn_storm_stop
+		}
+    }
+
+}
+
+yyk_spawn_gravity_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+		from = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = gravity_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_spawn_celestial_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+		from = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = celestial_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_spawn_electric_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+		from = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = electric_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_spawn_particle_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+		from = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = particle_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_spawn_solar_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+		from = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = solar_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_spawn_magnetic_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+		from = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = magnetic_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_spawn_shroud_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+		from = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = shroud_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_spawn_nexus_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+		from = { NOT = { has_country_flag = yykex_spawn_storm_stop } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = nexus_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_friend_spawn_random_storm = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex_friend
+        }
+        is_star = yes
+        solar_system = { NOT = { is_inside_storm = yes } }
+	}
+    effect = {
+		solar_system = {
+			spawn_random_storm = {
+				type = nexus_storm 
+				immediate = yes 
+				cosmic_storm_start_position = this.solar_system
+			}
+		}
+    }
+
+}
+
+yyk_spawn_nexus_storm_on_friend = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+    effect = {
+		random_system = {
+			limit = {
+				owner = { has_country_flag = yykex_friend }
+				is_capital_system = yes
+			}
+			if ={
+				limit = { is_inside_storm = yes }
+				every_cosmic_storm = {
+					limit = {any_system_within_storm = { is_same_value = prevprev } } 
+					destroy_cosmic_storm = yes 
+				}
+			}
+			spawn_random_storm = {
+				type = nexus_storm
+				immediate = yes 
+				cosmic_storm_start_position = this
+			}
+		}
+    }
+
+}

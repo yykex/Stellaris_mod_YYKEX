@@ -1,0 +1,218 @@
+yyk_friend_leader_trait_change = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex_friend
+		}
+        is_capital = yes
+	}
+
+	effect = {
+		owner = {
+			every_pool_leader = {
+				limit = { NOT = { has_leader_flag = yykex_leader_trait_changed } }
+				set_leader_flag = yykex_leader_trait_changed
+				remove_all_traits = yes
+				add_trait = leader_trait_eager
+				add_trait = leader_trait_resilient
+				add_trait = leader_trait_fallible_2
+				add_trait = leader_trait_stubborn_2
+				add_trait = leader_trait_melancholic_2
+				add_trait = leader_trait_arrested_development_2
+				change_background_ethic = ethic_gestalt_consciousness
+				if = {
+					limit = { leader_class = scientist }
+					add_trait = leader_trait_roamer_2
+					add_trait = leader_trait_archaeologist_2
+					add_trait = leader_trait_meticulous_2
+					add_trait = leader_trait_custom_AI_assistant
+					if = {
+						limit = { prev = { is_specialist_subject_type = { TYPE = scholarium } } }
+						if = {
+							limit = { years_passed < 10 }
+							add_trait = leader_trait_scholarium_explorer
+						}
+						else = {
+							add_trait = leader_trait_scholarium_investigator
+						}
+					}
+				}
+				if = {
+					limit = { leader_class = commander }
+					add_trait = leader_trait_cautious
+					add_trait = leader_trait_unyielding
+					add_trait = leader_trait_engineer
+					add_trait = leader_trait_restrained
+					add_trait = leader_trait_butcher
+					add_trait = leader_trait_gifted_2
+				}
+				if = {
+					limit = { leader_class = official }
+					add_trait = leader_trait_agrarian_upbringing
+					add_trait = leader_trait_righteous_2
+					add_trait = leader_trait_environmental_engineer
+					add_trait = leader_trait_architectural_interest
+					add_trait = leader_trait_homesteader_2
+				}
+				set_variable = {
+					which = "leader_pending_negative_traits_unmodified"
+					value = 0
+				}
+				if = {
+					limit = { species = { has_trait = trait_erudite } }
+					add_trait = leader_trait_erudite
+				}
+				if = {
+					limit = {species = { has_trait = trait_cybernetic } }
+					add_trait = leader_trait_cyborg
+				}
+				if = {
+					limit = {species = { has_trait = trait_psionic } }
+					add_trait = leader_trait_psionic
+				}
+				if = {
+					limit = { has_base_skill > 1 }
+					switch = {
+						trigger = has_base_skill
+						2 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+						}
+						3 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 2
+						}
+						4 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 3
+						}
+						5 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 4
+						}
+						6 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 5
+						}
+						7 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 6
+						}
+						8 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 7
+						}
+						9 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 8
+						}
+						10 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 9
+						}
+					}
+				}
+				if = {
+					limit = {
+						prev = {
+							has_tradition = tr_aptitude_champions_of_the_empire
+						}
+					}
+					switch = {
+						trigger = has_base_skill
+						2 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 2
+						}
+						3 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 3
+						}
+						4 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 4
+						}
+						5 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 5
+						}
+						6 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 6
+						}
+						7 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 7
+						}
+						8 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 8
+						}
+						9 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 9
+						}
+						10 = {
+							set_skill = 1
+							add_skill_without_trait_selection = 1
+							set_skill = 10
+						}
+					}
+				}
+			}
+			if = {
+				limit =  { has_country_flag = brainslug_divination_flag }
+				every_pool_leader = {
+					limit = { NOT = { has_trait = leader_trait_brainslug } }
+					add_trait = leader_trait_brainslug
+				}
+				every_owned_leader = {
+					limit = { NOT = { has_trait = leader_trait_brainslug } }
+					add_trait = leader_trait_brainslug
+				}
+			}
+			every_owned_leader = {
+				limit = {
+					species = { has_trait = trait_erudite }
+					NOT = { has_trait = leader_trait_erudite }
+				}
+				add_trait = leader_trait_erudite
+			}
+			every_owned_leader = {
+				limit = {
+					species = { has_trait = trait_cybernetic }
+					NOT = { has_trait = leader_trait_cyborg }
+				}
+				add_trait = leader_trait_cyborg
+			}
+			every_owned_leader = {
+				limit = {
+					species = { has_trait = trait_psionic }
+					NOT = { has_trait = leader_trait_psionic }
+				}
+				add_trait = leader_trait_psionic
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}

@@ -1,0 +1,551 @@
+yyk_crisis_10 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        NOT = { has_global_flag = prethoryn_invasion_happened }
+	}
+
+    allow={
+        OR = {
+            AND = { # Super early start prereqs
+				end_game_years_passed >= 0
+				OR = {
+					has_global_flag = endgame_crisis_early_start #From Ultima Vigilis
+					AND = { #Both crisis summoning resolutions active
+						is_active_resolution = 	resolution_galacticstudies_extradimensional_experimentation
+						is_active_resolution = resolution_galactic_threats_committee
+					}
+				}
+			}
+            AND = { # Early start
+				end_game_years_passed >= 25
+				OR = {
+					default_endgame_early_start_triggers = yes
+					any_country = {
+						is_country_type = default
+						OR = {
+							has_technology = tech_jump_drive_1
+							has_technology = tech_psi_jump_drive_1
+						}
+					}
+					is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+					is_active_resolution = resolution_galactic_threats_committee
+				}
+			}
+			end_game_years_passed >= 50 #Regular Start
+			has_global_flag = yykex_test
+        }
+    }
+
+    effect = {
+		every_system = {
+			limit = { has_star_flag = crisis_spawn_exclude }
+			set_star_flag = yykex_crisis_spawn_exclude
+		}
+		every_system = {
+			limit = {
+				NOR = {
+					has_star_flag = yykex_crisis_spawn_exclude
+					has_star_flag = yykex_prethoryn
+				}
+			}
+			set_star_flag = crisis_spawn_exclude
+		}
+		random_country = {
+            limit = { is_country_type = global_event }
+            country_event = { id = crisis.10 days = 0 random = 0 }
+			set_global_flag = galactic_crisis_happened
+			set_timed_global_flag = {
+				flag = galactic_crisis_recently_fired
+				years = 12
+			}
+        }
+		
+    }
+
+}
+
+yyk_crisis_12 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        has_global_flag = prethoryn_subspace_echoes
+	}
+
+	effect = {
+		from = {
+			country_event = { id = crisis.12 days = 0 random = 0 }
+		}
+		every_system = {
+			limit = { NOT = { has_star_flag = yykex_crisis_spawn_exclude } }
+			remove_star_flag = crisis_spawn_exclude
+		}
+	}
+
+}
+
+yyk_crisis_50 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        has_global_flag = prethoryn_main_invasion
+		NOT = { has_global_flag = sentinels_founded }
+	}
+
+	effect = {
+		random_country = {
+			limit = { is_country_type = swarm }
+			country_event = { id = crisis.50 days = 0 random = 0 }
+		}
+	}
+}
+
+yyk_crisis_100 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        has_global_flag = prethoryn_main_invasion
+		any_system = {
+			exists = owner
+			owner = { 
+                is_country_type = swarm 
+                NOT = { has_country_flag = injured_swarm_queen }
+            }
+		}
+	}
+
+	effect = {
+		random_country = {
+			limit = { is_country_type = swarm }
+			country_event = { id = crisis.100 days = 0 random = 0 }
+		}
+	}
+}
+
+yyk_crisis_207 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        has_global_flag = prethoryn_main_invasion
+		any_system = {
+			exists = owner
+			owner = { is_country_type = swarm }
+		}
+	}
+
+	effect = {
+		random_country = {
+			limit = { is_country_type = swarm }
+			country_event = { id = crisis.207 days = 0 random = 0 }
+		}
+	}
+}
+
+yyk_crisis_252 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        has_global_flag = prethoryn_main_invasion
+		NOT = { has_global_flag = brood_queen_captured }
+	}
+
+	effect = {
+		set_global_flag = brood_queen_captured
+		from = { country_event = { id = crisis.252 } }
+	}
+}
+
+yyk_crisis_1000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        NOT = { has_global_flag = extradimensional_invasion_happened }
+	}
+
+    allow = {
+        OR = {
+            OR = { # Super early start prereqs
+                has_global_flag = endgame_crisis_early_start #From Ultima Vigilis
+				AND = { #Both crisis summoning resolutions active
+					is_active_resolution = 	resolution_galacticstudies_extradimensional_experimentation
+					is_active_resolution = resolution_galactic_threats_committee
+                    end_game_years_passed >= 0
+				}
+			}
+            AND = { # Early start
+				end_game_years_passed >= 25
+				OR = {
+					default_endgame_early_start_triggers = yes
+					any_country = {
+						is_country_type = default
+						OR = {
+							has_technology = tech_jump_drive_1
+							has_technology = tech_psi_jump_drive_1
+						}
+					}
+					is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+					is_active_resolution = resolution_galactic_threats_committee
+				}
+			}
+			end_game_years_passed >= 50 #Regular Start
+			has_global_flag = yykex_test
+        }
+    }
+
+    effect = {
+		every_system = {
+			limit = { has_star_flag = crisis_spawn_exclude }
+			set_star_flag = yykex_crisis_spawn_exclude
+		}
+		every_system = {
+			limit = {
+				NOR = {
+					has_star_flag = yykex_crisis_spawn_exclude
+					has_star_flag = yykex_extradimensional
+				}
+			}
+			set_star_flag = crisis_spawn_exclude
+		}
+		random_country = {
+            limit = { is_country_type = global_event }
+            country_event = { id = crisis.1000 days = 0 random = 0 }
+			set_global_flag = galactic_crisis_happened
+			set_timed_global_flag = {
+				flag = galactic_crisis_recently_fired
+				years = 12
+			}
+        }
+		every_system = {
+			limit = { NOT = { has_star_flag = yykex_crisis_spawn_exclude } }
+			remove_star_flag = crisis_spawn_exclude
+		}
+    }
+
+}
+
+yyk_crisis_1265 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        has_global_flag = extradimensional_invasion_happened
+		NOT = { has_global_flag = extradimensional_invasion_defeated }
+	}
+
+	allow = {
+		
+	}
+
+	effect = {
+		random_country = {
+			limit = {
+				OR = {
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+				}
+			}
+			country_event = { id = crisis.1265 }
+		}
+	}
+}
+
+yyk_crisis_2005 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        NOT = { has_global_flag = ai_invasion_happened }
+	}
+
+    allow={
+        OR = {
+            AND = { # Super early start prereqs
+				end_game_years_passed >= 0
+				OR = {
+					has_global_flag = endgame_crisis_early_start #From Ultima Vigilis
+					AND = { #Both crisis summoning resolutions active
+						is_active_resolution = 	resolution_galacticstudies_extradimensional_experimentation
+						is_active_resolution = resolution_galactic_threats_committee
+					}
+				}
+			}
+            AND = { # Early start
+				end_game_years_passed >= 25
+				OR = {
+					default_endgame_early_start_triggers = yes
+					any_country = {
+						is_country_type = default
+						OR = {
+							has_technology = tech_jump_drive_1
+							has_technology = tech_psi_jump_drive_1
+						}
+					}
+					is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+					is_active_resolution = resolution_galactic_threats_committee
+				}
+			}
+			end_game_years_passed >= 50 #Regular Start
+			has_global_flag = yykex_test
+        }
+    }
+
+    effect = {
+		random_country = {
+            limit = { is_country_type = global_event }
+            country_event = { id = crisis.2005 days = 0 random = 0 }
+			set_global_flag = galactic_crisis_happened
+			set_timed_global_flag = {
+				flag = galactic_crisis_recently_fired
+				years = 12
+			}
+        }
+    }
+
+}
+
+yyk_crisis_2051 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        has_global_flag = ai_invasion_ongoing
+	}
+
+	effect = {
+		random_country = {
+			limit = { is_country_type = ai_empire }
+			every_planet_within_border = {
+				limit = {
+					is_planet_class = pc_ai
+					NOT = { has_planet_flag = machine_lair }
+				}
+				planet_event = { id = crisis.2051 days = 0 random = 0 }
+			}
+		}
+	}
+
+}
+
+yyk_crisis_2400 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        has_global_flag = ai_invasion_ongoing
+		NOT = { has_global_flag = cybrex_resurface }
+	}
+
+	effect = {
+		random_country = {
+			limit = { is_country_type = ai_empire }
+			country_event = { id = crisis.2400 }
+		}
+	}
+
+}
+
+yyk_crisis_8005 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+        is_star = yes
+        solar_system = { is_capital_system = yes }
+        NOT = { has_global_flag = synth_queen_happened }
+	}
+
+    allow={
+        OR = {
+            AND = { # Super early start prereqs
+				end_game_years_passed >= 0
+				OR = {
+					has_global_flag = endgame_crisis_early_start #From Ultima Vigilis
+					AND = { #Both crisis summoning resolutions active
+						is_active_resolution = 	resolution_galacticstudies_extradimensional_experimentation
+						is_active_resolution = resolution_galactic_threats_committee
+					}
+				}
+			}
+            AND = { # Early start
+				end_game_years_passed >= 25
+				OR = {
+					default_endgame_early_start_triggers = yes
+					any_country = {
+						is_country_type = default
+						OR = {
+							has_technology = tech_jump_drive_1
+							has_technology = tech_psi_jump_drive_1
+						}
+					}
+					is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+					is_active_resolution = resolution_galactic_threats_committee
+				}
+			}
+			end_game_years_passed >= 50 #Regular Start
+			has_global_flag = yykex_test
+        }
+    }
+
+    effect = {
+		random_country = {
+            limit = { is_country_type = global_event }
+            country_event = { id = crisis.8005 days = 0 random = 0 }
+			set_global_flag = galactic_crisis_happened
+			set_timed_global_flag = {
+				flag = galactic_crisis_recently_fired
+				years = 12
+			}
+        }
+    }
+
+}

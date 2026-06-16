@@ -1,0 +1,1011 @@
+yyk_spawn_astral_rift_00_close = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = {
+			set_country_flag = yyk_spawn_astral_rift_close
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_01_open = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = yyk_spawn_astral_rift_close
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = {
+			remove_country_flag = yyk_spawn_astral_rift_close
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_02_corridors = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = corridors }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_02_corridors }
+	}
+    effect = {
+		set_global_flag = astral_rift_02_corridors
+		solar_system = {
+			spawn_astral_rift = {
+				id = corridors
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_03_ancient_battlegrounds = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = ancient_battlegrounds }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_03_ancient_battlegrounds }
+	}
+    effect = {
+		set_global_flag = astral_rift_03_ancient_battlegrounds
+		solar_system = {
+			spawn_astral_rift = {
+				id = ancient_battlegrounds
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_04_library = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = library }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_04_library }
+	}
+    effect = {
+		set_global_flag = astral_rift_04_library
+		solar_system = {
+			spawn_astral_rift = {
+				id = library
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_05_subnautical = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = subnautical }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_05_subnautical }
+	}
+    effect = {
+		set_global_flag = astral_rift_05_subnautical
+		solar_system = {
+			spawn_astral_rift = {
+				id = subnautical
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_06_tower = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = tower }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_06_tower }
+	}
+    effect = {
+		set_global_flag = astral_rift_06_tower
+		solar_system = {
+			spawn_astral_rift = {
+				id = tower
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_07_whiteout = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = whiteout }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_07_whiteout }
+	}
+    effect = {
+		set_global_flag = astral_rift_07_whiteout
+		solar_system = {
+			spawn_astral_rift = {
+				id = whiteout
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_08_advisor = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = advisor }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_08_advisor }
+	}
+    effect = {
+		set_global_flag = astral_rift_08_advisor
+		solar_system = {
+			spawn_astral_rift = {
+				id = advisor
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_09_vortex = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = vortex }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_09_vortex }
+	}
+    effect = {
+		set_global_flag = astral_rift_09_vortex
+		solar_system = {
+			spawn_astral_rift = {
+				id = vortex
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_11_lonely_planet = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = lonely_planet }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_11_lonely_planet }
+	}
+    effect = {
+		set_global_flag = astral_rift_11_lonely_planet
+		solar_system = {
+			spawn_astral_rift = {
+				id = lonely_planet
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_12_microverse = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = microverse }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_12_microverse }
+	}
+    effect = {
+		set_global_flag = astral_rift_12_microverse
+		solar_system = {
+			spawn_astral_rift = {
+				id = microverse
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_13_fluid = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = fluid }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_13_fluid }
+	}
+    effect = {
+		set_global_flag = astral_rift_13_fluid
+		solar_system = {
+			spawn_astral_rift = {
+				id = fluid
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_14_garden = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = garden }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_14_garden }
+	}
+    effect = {
+		set_global_flag = astral_rift_14_garden
+		solar_system = {
+			spawn_astral_rift = {
+				id = garden
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_15_desert_ruins = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = desert_ruins }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_15_desert_ruins }
+	}
+    effect = {
+		set_global_flag = astral_rift_15_desert_ruins
+		solar_system = {
+			spawn_astral_rift = {
+				id = desert_ruins
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_16_station = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = station }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_16_station }
+	}
+    effect = {
+		set_global_flag = astral_rift_16_station
+		solar_system = {
+			spawn_astral_rift = {
+				id = station
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_17_tomb = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = tomb }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_17_tomb }
+	}
+    effect = {
+		set_global_flag = astral_rift_17_tomb
+		solar_system = {
+			spawn_astral_rift = {
+				id = tomb
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_18_rockworms = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = rockworms }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_18_rockworms }
+	}
+    effect = {
+		set_global_flag = astral_rift_18_rockworms
+		solar_system = {
+			spawn_astral_rift = {
+				id = rockworms
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_19_volcano = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = volcano }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_19_volcano }
+	}
+    effect = {
+		set_global_flag = astral_rift_19_volcano
+		solar_system = {
+			spawn_astral_rift = {
+				id = volcano
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_20_research_lab = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = research_lab }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_20_research_lab }
+	}
+    effect = {
+		set_global_flag = astral_rift_20_research_lab
+		solar_system = {
+			spawn_astral_rift = {
+				id = research_lab
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_21_clock = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = clock }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_21_clock }
+	}
+    effect = {
+		set_global_flag = astral_rift_21_clock
+		solar_system = {
+			spawn_astral_rift = {
+				id = clock
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_22_dimensional_dump = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = dimensional_dump }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_22_dimensional_dump }
+	}
+    effect = {
+		set_global_flag = astral_rift_22_dimensional_dump
+		solar_system = {
+			spawn_astral_rift = {
+				id = dimensional_dump
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_23_genesis = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = genesis }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_23_genesis }
+	}
+    effect = {
+		set_global_flag = astral_rift_23_genesis
+		solar_system = {
+			spawn_astral_rift = {
+				id = genesis
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_24_entangled_dark_matter = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = entangled_dark_matter }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_24_entangled_dark_matter }
+	}
+    effect = {
+		set_global_flag = astral_rift_24_entangled_dark_matter
+		solar_system = {
+			spawn_astral_rift = {
+				id = entangled_dark_matter
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_25_bleached_planet = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = bleached_planet }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_25_bleached_planet }
+	}
+    effect = {
+		set_global_flag = astral_rift_25_bleached_planet
+		solar_system = {
+			spawn_astral_rift = {
+				id = bleached_planet
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_26_cleaning_drones = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = cleaning_drones }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_26_cleaning_drones }
+	}
+    effect = {
+		set_global_flag = astral_rift_26_cleaning_drones
+		solar_system = {
+			spawn_astral_rift = {
+				id = cleaning_drones
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_27_windswept_planet = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = windswept_planet }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_27_windswept_planet }
+	}
+    effect = {
+		set_global_flag = astral_rift_27_windswept_planet
+		solar_system = {
+			spawn_astral_rift = {
+				id = windswept_planet
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_28_tiny_planet = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = tiny_planet }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_28_tiny_planet }
+	}
+    effect = {
+		set_global_flag = astral_rift_28_tiny_planet
+		solar_system = {
+			spawn_astral_rift = {
+				id = tiny_planet
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_29_interdimensional_circus = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = interdimensional_circus }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_29_interdimensional_circus }
+	}
+    effect = {
+		set_global_flag = astral_rift_29_interdimensional_circus
+		solar_system = {
+			spawn_astral_rift = {
+				id = interdimensional_circus
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_30_siege_on_paradise = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = siege_on_paradise }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_30_siege_on_paradise }
+	}
+    effect = {
+		set_global_flag = astral_rift_30_siege_on_paradise
+		solar_system = {
+			spawn_astral_rift = {
+				id = siege_on_paradise
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_31_tropical_habitat = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = tropical_habitat }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_31_tropical_habitat }
+	}
+    effect = {
+		set_global_flag = astral_rift_31_tropical_habitat
+		solar_system = {
+			spawn_astral_rift = {
+				id = tropical_habitat
+			}
+		}
+    }
+
+}
+
+yyk_spawn_astral_rift_32_psionic_stranger = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yyk_spawn_astral_rift_close }
+			NOT = { is_astral_rift_explored = psionic_stranger }
+        }
+		solar_system = { NOT = { has_astral_rift = yes } }
+		is_star = yes
+		NOT = { has_global_flag = astral_rift_32_psionic_stranger }
+	}
+    effect = {
+		set_global_flag = astral_rift_32_psionic_stranger
+		solar_system = {
+			spawn_astral_rift = {
+				id = psionic_stranger
+			}
+		}
+    }
+
+}

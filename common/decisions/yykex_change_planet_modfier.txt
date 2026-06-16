@@ -1,0 +1,315 @@
+yyk_add_planet_modifier_close = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { set_country_flag = yykex_add_planet_modifier_close }
+    }
+
+}
+
+yyk_add_planet_modifier_open = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = yykex_add_planet_modifier_close
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_country_flag = yykex_add_planet_modifier_close }
+    }
+
+}
+
+yyk_remove_allCommon_planet_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+	}
+    effect = {
+		remove_modifier = hazardous_weather
+        remove_modifier = dangerous_wildlife
+        remove_modifier = weak_magnetic_field
+        remove_modifier = strong_magnetic_field
+        remove_modifier = unstable_tectonics
+        remove_modifier = tidal_locked
+        remove_modifier = asteroid_impacts
+        remove_modifier = wild_storms
+        remove_modifier = mineral_rich
+        remove_modifier = ultra_rich
+        remove_modifier = mineral_poor
+        remove_modifier = asteroid_belt
+        remove_modifier = natural_beauty
+        remove_modifier = atmospheric_aphrodisiac
+        remove_modifier = atmospheric_hallucinogen
+        remove_modifier = lush_planet
+        remove_modifier = bleak_planet
+        remove_modifier = irradiated_planet
+        remove_modifier = low_gravity
+        remove_modifier = high_gravity
+        remove_modifier = abundant_geothermal_activity
+        remove_modifier = subterranean_wildlife
+        remove_modifier = rich_mircoflora
+        remove_modifier = hyper_ecosystem
+        remove_modifier = docile_fauna
+        remove_modifier = recent_eruption
+    }
+
+}
+
+yyk_add_energy_planet_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+	}
+    effect = {
+		add_modifier = { modifier = hazardous_weather days = -1 }
+        add_modifier = { modifier = strong_magnetic_field days = -1 }
+        add_modifier = { modifier = abundant_geothermal_activity days = -1 }
+    }
+
+}
+
+yyk_add_minerals_planet_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+	}
+    effect = {
+		add_modifier = { modifier = ultra_rich days = -1 }
+        add_modifier = { modifier = asteroid_belt days = -1 }
+        add_modifier = { modifier = subterranean_wildlife days = -1 }
+    }
+
+}
+
+yyk_add_food_planet_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+	}
+    effect = {
+		add_modifier = { modifier = lush_planet days = -1 }
+        add_modifier = { modifier = rich_mircoflora days = -1 }
+        add_modifier = { modifier = hyper_ecosystem days = -1 }
+    }
+
+}
+
+yyk_add_tech_planet_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+	}
+    effect = {
+		add_modifier = { modifier = docile_fauna days = -1 }
+        add_modifier = { modifier = unstable_tectonics days = -1 }
+        add_modifier = { modifier = wild_storms days = -1 }
+    }
+
+}
+
+yyk_add_mastery_of_nature_planet_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			#NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+		NOT = { has_modifier = "mastery_of_nature" }
+	}
+    effect = {
+		add_modifier = { modifier = mastery_of_nature days = -1 }
+    }
+
+}
+
+yyk_add_luxuries_boost_planet_modifier = {
+	sound = event_administrative_work
+	icon = decision_luxuries
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			#NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+		NOT = { has_modifier = "planet_luxuries_boost" }
+	}
+    effect = {
+		add_modifier = { modifier = planet_luxuries_boost days = -1 }
+    }
+
+}
+
+yyk_add_museum_exhibits_planet_modifier = {
+	sound = event_administrative_work
+	icon = decision_museum
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+		NOT = { has_modifier = "planet_museum_exhibits" }
+	}
+	allow = {
+		# OR = {
+		# 	num_assigned_jobs = {
+		# 		job = bureaucrat
+		# 		value >= 1
+		# 	}
+		# 	num_assigned_jobs = {
+		# 		job = priest
+		# 		value >= 1
+		# 	}
+		# 	num_assigned_jobs = {
+		# 		job = death_priest
+		# 		value >= 1
+		# 	}
+		# 	num_assigned_jobs = {
+		# 		job = steward
+		# 		value >= 1
+		# 	}
+		# 	num_assigned_jobs = {
+		# 		job = haruspex
+		# 		value >= 1
+		# 	}
+		# }
+	}
+    effect = {
+		add_modifier = { modifier = planet_museum_exhibits days = -1 }
+    }
+
+}
+
+yyk_add_cultivated_worldscaping_modifier_planet_modifier = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			#NOT = { has_country_flag = yykex_add_planet_modifier_close }
+        }
+		NOT = { has_modifier = "cultivated_worldscaping_modifier" }
+	}
+    effect = {
+		add_modifier = { modifier = cultivated_worldscaping_modifier days = -1 }
+    }
+
+}

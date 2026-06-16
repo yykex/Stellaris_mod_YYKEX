@@ -1,0 +1,436 @@
+yyk_add_resource_close = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { set_country_flag = yykex_add_resource_close }
+    }
+
+}
+
+yyk_add_resource_open = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+			has_country_flag = yykex_add_resource_close
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { remove_country_flag = yykex_add_resource_close }
+    }
+
+}
+
+yyk_add_energy_100000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { energy = 100000 } }
+    }
+
+}
+
+yyk_add_minerals_100000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { minerals = 100000 } }
+    }
+
+}
+
+yyk_add_food_100000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { food = 100000 } }
+    }
+
+}
+
+yyk_add_volatile_motes_100000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { volatile_motes = 100000 } }
+    }
+
+}
+
+yyk_add_exotic_gases_100000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { exotic_gases = 100000 } }
+    }
+
+}
+
+yyk_add_rare_crystals_100000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { rare_crystals = 100000 } }
+    }
+
+}
+
+yyk_add_alloys_100000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { alloys = 100000 } }
+    }
+
+}
+
+yyk_add_consumer_goods_100000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { consumer_goods = 100000 } }
+    }
+
+}
+
+yyk_add_influence_1000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { influence = 1000 } }
+    }
+
+}
+
+yyk_add_unity_10000000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			OR = {
+				AND = {
+					has_country_flag = yykex
+            		NOT = { has_country_flag = yykex_add_resource_close }
+				}
+				has_country_flag = yykex_friend_never
+			}
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { unity = 10000000 } }
+    }
+
+}
+
+yyk_add_sr_living_metal_10000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { sr_living_metal = 10000 } }
+    }
+
+}
+
+yyk_add_sr_zro_10000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { sr_zro = 10000 } }
+    }
+
+}
+
+yyk_add_sr_dark_matter_10000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { sr_dark_matter = 10000 } }
+    }
+
+}
+
+yyk_add_nanites_10000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { nanites = 10000 } }
+    }
+
+}
+
+yyk_add_minor_artifacts_10000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { minor_artifacts = 10000 } }
+    }
+
+}
+
+yyk_add_astral_threads_10000 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			has_country_flag = yykex
+            NOT = { has_country_flag = yykex_add_resource_close }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { add_resource = { astral_threads = 10000 } }
+    }
+
+}

@@ -1,0 +1,219 @@
+yyk_covenant_event_1 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			OR = {
+                has_country_flag = yykex
+                has_country_flag = yykex_friend
+            }
+            NOR = {
+                has_country_flag = composer_covenant_rank_1
+                has_country_flag = eater_covenant_rank_1
+                has_country_flag = instrument_covenant_rank_1
+                has_country_flag = whisperers_covenant_rank_1
+		    }
+		    OR = {
+			    has_country_flag = composer_covenant_confirmed
+			    has_country_flag = eater_covenant_confirmed
+			    has_country_flag = instrument_covenant_confirmed
+			    has_country_flag = whisperers_covenant_confirmed
+		    }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { 
+			switch = {
+				trigger = has_country_flag
+                composer_covenant_confirmed = {
+                    set_variable = { which = composer_covenant_rank value = 21 }
+                }
+                eater_covenant_confirmed = {
+                    set_variable = { which = eater_covenant_rank value = 21 }
+                }
+                instrument_covenant_confirmed = {
+                    set_variable = { which = instrument_covenant_rank value = 21 }
+                }
+                whisperers_covenant_confirmed = {
+                    set_variable = { which = whisperers_covenant_rank value = 21 }
+                }
+            }
+            country_event = { id = utopia.2670 days = 0 }
+		}
+    }
+
+}
+
+yyk_covenant_event_2 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			OR = {
+                has_country_flag = yykex
+                has_country_flag = yykex_friend
+            }
+            NOR = {
+                has_country_flag = composer_covenant_rank_2
+                has_country_flag = eater_covenant_rank_2
+                has_country_flag = instrument_covenant_rank_2
+                has_country_flag = whisperers_covenant_rank_2
+		    }
+		    OR = {
+			    has_country_flag = composer_covenant_rank_1
+                has_country_flag = eater_covenant_rank_1
+                has_country_flag = instrument_covenant_rank_1
+                has_country_flag = whisperers_covenant_rank_1
+		    }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { 
+			switch = {
+				trigger = has_country_flag
+                composer_covenant_confirmed = {
+                    set_variable = { which = composer_covenant_rank value = 51 }
+                }
+                eater_covenant_confirmed = {
+                    set_variable = { which = eater_covenant_rank value = 51 }
+                }
+                instrument_covenant_confirmed = {
+                    set_variable = { which = instrument_covenant_rank value = 51 }
+                }
+                whisperers_covenant_confirmed = {
+                    set_variable = { which = whisperers_covenant_rank value = 51 }
+                }
+            }
+            country_event = { id = utopia.2675 days = 0 }
+		}
+    }
+
+}
+
+yyk_covenant_event_3 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			OR = {
+                has_country_flag = yykex
+                has_country_flag = yykex_friend
+            }
+            NOR = {
+                has_country_flag = composer_covenant_rank_3
+                has_country_flag = eater_covenant_rank_3
+                has_country_flag = instrument_covenant_rank_3
+                has_country_flag = whisperers_covenant_rank_3
+		    }
+		    OR = {
+			    has_country_flag = composer_covenant_rank_2
+                has_country_flag = eater_covenant_rank_2
+                has_country_flag = instrument_covenant_rank_2
+                has_country_flag = whisperers_covenant_rank_2
+		    }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { 
+			switch = {
+				trigger = has_country_flag
+                composer_covenant_confirmed = {
+                    set_variable = { which = composer_covenant_rank value = 91 }
+                }
+                eater_covenant_confirmed = {
+                    set_variable = { which = eater_covenant_rank value = 91 }
+                }
+                instrument_covenant_confirmed = {
+                    set_variable = { which = instrument_covenant_rank value = 91 }
+                }
+                whisperers_covenant_confirmed = {
+                    set_variable = { which = whisperers_covenant_rank value = 91 }
+                }
+            }
+            country_event = { id = utopia.2680 days = 0 }
+		}
+    }
+
+}
+
+yyk_covenant_event_4 = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_ai = no
+			OR = {
+                has_country_flag = yykex
+                has_country_flag = yykex_friend
+            }
+            NOR = {
+                has_country_flag = composer_covenant_rank_4
+                has_country_flag = eater_covenant_rank_4
+                has_country_flag = instrument_covenant_rank_4
+                has_country_flag = whisperers_covenant_rank_4
+		    }
+		    OR = {
+			    has_country_flag = composer_covenant_rank_3
+                has_country_flag = eater_covenant_rank_3
+                has_country_flag = instrument_covenant_rank_3
+                has_country_flag = whisperers_covenant_rank_3
+		    }
+        }
+		is_capital = yes
+	}
+    effect = {
+		owner = { 
+			switch = {
+				trigger = has_country_flag
+                composer_covenant_confirmed = {
+                    set_variable = { which = composer_covenant_rank value = 151 }
+                }
+                eater_covenant_confirmed = {
+                    set_variable = { which = eater_covenant_rank value = 151 }
+                }
+                instrument_covenant_confirmed = {
+                    set_variable = { which = instrument_covenant_rank value = 151 }
+                }
+                whisperers_covenant_confirmed = {
+                    set_variable = { which = whisperers_covenant_rank value = 151 }
+                }
+            }
+            country_event = { id = utopia.2685 days = 0 }
+		}
+    }
+
+}

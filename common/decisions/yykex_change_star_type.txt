@@ -1,0 +1,54 @@
+yyk_blackHole2Star = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        is_planet_class = pc_black_hole
+	}
+    effect = {
+		set_planet_flag = shroud_storm_changed
+		change_pc = pc_b_star
+		add_modifier = { modifier = shroud_switched days = -1 }
+		solar_system = { set_star_class = sc_b }
+    }
+
+}
+
+yyk_stop_shroud_storm_changed = {
+	sound = event_default
+	icon = default
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		exists = from
+		from = {
+			is_ai = no
+			has_country_flag = yykex
+        }
+		is_star = yes
+        solar_system = { is_capital_system = yes }
+	}
+    effect = {
+		from = { 
+			every_planet_within_border = {
+				set_planet_flag = shroud_storm_changed
+			}
+		}
+    }
+
+}
