@@ -5,4 +5,5 @@ NGameplay = {
     #GOVERNMENT_CIVIC_POINTS_BASE		= 7		# Base amount of civic points (to "pay" for government civic costs)
     TRADITION_CATEGORIES_MAX	= 11
 	ASCENSION_PERKS_SLOTS		= 12
+    PLANET_ASCENSION_HARD_CAP = 14
 }
