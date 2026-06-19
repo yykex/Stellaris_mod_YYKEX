@@ -1,0 +1,20 @@
+# YYKEX ship behavior override
+# common/ship_behaviors is FIOS, so this file should be loaded before vanilla.
+# Change: artillery computer keeps max weapon range instead of median.
+
+ship_behavior = {
+	name = "artillery"
+	preferred_attack_range = max
+	formation_distance = max
+	return_to_formation_distance = max
+	source_target_anchor_factor = 1.0
+	combat_target_anchor = root
+
+	collision_awareness = 0.2
+	collision_radius = 2.0							#collision_radius is a multiplier on the radius specified in the ship size
+	collision_strafe = 2.5							#collision_strafe allows the ship to move in any direction while colliding with another
+	attack_move_pattern = maintain_distance
+	passive_move_pattern = stay_at_range
+
+	desc = "ARTILLERY_BEHAVIOR_DESC"
+}
